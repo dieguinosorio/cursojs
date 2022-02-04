@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Modulos en Ejercicios 9</title>
+</head>
+<body>
+    <h1> Ejercicios #9</h1>
+    <p>
+        Programa una clase llamada Pelicula.<br>
+        La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.<br>
+          - Todos los datos del objeto son obligatorios.<br>
+          - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los <br>
+             7 restantes números.
+          - Valida que el título no rebase los 100 caracteres.<br>
+          - Valida que el director no rebase los 50 caracteres.<br>
+          - Valida que el año de estreno sea un número entero de 4 dígitos.<br>
+          - Valida que el país o paises sea introducidos en forma de arreglo.<br>
+          - Valida que los géneros sean introducidos en forma de arreglo.<br>
+          - Valida que los géneros introducidos esten dentro de los géneros aceptados*.<br>
+          - Crea un método estático que devuelva los géneros aceptados*.<br>
+          - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+            decimal de una posición.<br>
+          - Crea un método que devuelva toda la ficha técnica de la película.<br>
+          - Apartir de un arreglo con la información de 3 películas genera 3 
+            instancias de la clase de forma automatizada e imprime la ficha técnica 
+            de cada película.
+        
+        * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+</body>
+<script>
+class Pelicula{
+    static get listaGeneros(){
+        return ['Action','Adult', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary' ,'Drama', 'Family', 'Fantasy', 'Film Noir', 'Game-Show', 'History', 'Horror','Musical', 'Music', 'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Talk-Show', 'Thriller', 'War', 'Western'];
+    }
+    constructor({id,titulo,director,anioEstreno,paisOrigen,genero,calificacion}){
+        this.id = id;
+        this.titulo = titulo;
+        this.director = director;
+        this.anioEstreno = anioEstreno;
+        this.paisOrigen = paisOrigen;
+        this.genero = genero;
+        this.calificacion = calificacion;
+        this.validarDatos().datosValidos();
+    }
+
+    validarDatos() {
+        let me = this;
+        const validarString = (propiedad,valor)=>{
+
+            if(!valor) return console.warn(`${propiedad} ${valor} esta vacio`);
+
+            if(typeof valor !== 'string') return console.warn(`${propiedad} ${valor} no es una cadena de texto`);
+
+            return true;
+        }
+        const validarImdb = (id)=>{
+            //El ^ dice que no debe haber nada antes ni despues
+            if(!(/^([a-z]){2}([0-9]){7}$/.test(id))) return console.warn(`${id} no es valido`);
+            return true;
+        }
+        const validarArreglo = (nmArreglo,arreglo) =>{
+            if(!arreglo) return console.warn(`El ${nmArreglo} esta vacio`);
+            if(!(arreglo instanceof Array)) return console.warn(`El arreglo ${nmArreglo}  debe ser un arreglo`);
+            if(arreglo.length <=0) return console.warn(`El ${nmArreglo} no tiene datos`);
+
+            return true;
+        }
+        return {
+            valId(){
+                if(!validarString('id',me.id)) return false;
+                if(!validarImdb(me.id)) return false;
+                return true;
+            },
+            valTitulo(){
+                if(!validarString('id',me.titulo)) return false;
+                if(me.titulo.length > 100 ) return console.warn(` el titulo tiene ${me.titulo.length}, maximo son 100`);
+                return true;
+            },
+            valDirector(){
+                if(!validarString('id',me.id)) return false;
+                if(me.director.length > 50) return console.warn(` el director tiene ${me.titulo.length}, maximo son 50`);
+                return true;
+            },
+            valAnioEstreno(){
+                if(!(/^([0-9]){4}$/.test(me.anioEstreno))) return console.warn(`El año ${me.anioEstreno} no es valido`);
+                return true;
+            },
+            valPaisOrigen(){
+                validarArreglo('paises',me.paisOrigen)
+                return true;
+            },
+            valGenero(){
+                validarArreglo('genero',me.genero);
+                return me.genero.map(e =>{
+                   return !Pelicula.listaGeneros.includes(e) ?  console.error(`El genero ${e} no esta incluido en los permitidos, permitidos : ${Pelicula.listaGeneros}`) :'';
+                })
+                return true;
+            },
+            valCalificacion(){
+                if(!/^([0-9]){2}([.][0-9]){1}?$/.test(me.calificacion) && me.calificacion > 10 ) return console.warn(`La calificacion ${me.calificacion} no es valida`);;
+                return true;
+            },
+            datosValidos(){
+                return this.valId() && this.valTitulo() && this.valDirector() && this.valAnioEstreno() && this.valPaisOrigen() && this.valGenero() && this.valCalificacion();
+            }
+        }
+    }
+
+    imprimirFicha(){
+        console.table(
+            {
+                'ID':this.id,
+                'TITULO':this.titulo ,
+                'DIRECTOR':this.director,
+                'AÑO ESTRENO':this.anioEstreno,
+                'PAIS ORIGEN':this.paisOrigen.join(','),
+                'GENERO':this.genero.join(','),
+                'CALIFICACION':this.calificacion,
+            }
+        )
+    }
+}
+
+const arrPeliculas = [
+    {id:'dk0000000',titulo:'Los Jefferson',director:'Diego', anioEstreno: 1975,paisOrigen:['EEUU','Columbia'],genero: ['Action'],calificacion: 55.5},
+    {id:'dk0000001',titulo:'Alerta Roja',director:'Diego', anioEstreno: 2021,paisOrigen:['Canada','Columbia'],genero: ['Horror'],calificacion: 10.5},
+    {id:'dk0000002',titulo:'son como Niños',director:'Diego', anioEstreno: 2011,paisOrigen:['China','Columbia'],genero: ['Comedy'],calificacion: 5.5}
+]
+arrPeliculas.map(e=>{
+    e = new Pelicula(e);
+    e.imprimirFicha();
+})
+</script>
+</html>
+</html>

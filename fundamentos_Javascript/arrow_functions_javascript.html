@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Arrow Functions</h1>
+</body>
+
+<script>
+    //saludar();
+    //saludar2();
+    //Si llamamos las funciones antes de expresarlas ahorraja un error por que se esta declarando antes de inicializar
+    //Con las funciones declaradas no pasa eso ejemplo function saludar(){console.log("hola")}
+    const saludar = function(){
+        console.log("Hola Como estas.")
+    }
+    //arrow function
+    const saludar2 = ()=>{
+        console.log("Hola mundo")
+    }
+
+    //Cuando la funcion solo tiene un valor se puede dejar una sola linea
+    const saludar3 =()=> console.log("Hola mundo arrow function")
+    saludar();
+    saludar2();
+    saludar3();
+
+    //Cuando recibe 1 solo parametros no es necesario poner los parentesis
+    const saludarNm = nombre => console.log(`Hola ${nombre.toUpperCase()}`) 
+
+    //Cuando no recibe parametros si es obligatorio
+    const saludarMundo = () => console.log(`Hola Mundo`) 
+
+    saludarNm("Diego")
+    saludarMundo();
+
+    function sumar(a,b){
+        return a+b;
+    }
+
+    console.log(sumar(1,4))
+
+    //Con arrow function
+
+    //Este tipo de funciones realizar automaticamente el return si es una funcion de una sola linea
+    const suma = (a,b) => a+b;
+    console.log(suma(5,5))
+
+    //Arrow functions con parametros rest 
+    const sumas = (...num) => {
+        let suma=0;
+        suma = num.reduce((a,b)=> a+b)
+        return suma
+    };
+    console.log(sumas(10,10,10))
+
+    function Perro(){
+        console.log(this)//this representa window el objeto de la ventana que esta abierta
+    }
+
+    Perro();
+
+    //De esta manera las arrow functions imprimira el this del contexto global y no respetara el contexto del objeto
+    const perrito = {
+        nombre:'Odie',
+        edad:'4  meses',
+        raza:'bulldog friench',
+        imprimirDatos:  () => {
+            console.log(this)
+        }
+    }
+     //Las arrow function tiene la capacidad de saltarse el contexto donde se encuentren y heredar el contexto global
+    //Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+    perrito.imprimirDatos();
+
+    //De esta manera this imprime el contexto dentro del onjeto literal osea imprime solo las propiedades o metodos del objeto
+    const perrito3 = {
+        nombre:'Odie',
+        edad:'4  meses',
+        raza:'bulldog friench',
+        imprimirDatos:  function() {
+            console.log(this)
+        }
+    }
+    //{nombre: 'Odie', edad: '4  meses', raza: 'bulldog friench', imprimirDatos: ƒ}
+    perrito3.imprimirDatos();
+
+    this.Perro();
+   
+
+</script>
+</html>
+</html>

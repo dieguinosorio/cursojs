@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Objeto Date</h1>
+</body>
+
+<script>
+  console.log(Date());
+  let fecha = new Date();
+  console.log(fecha.getDate())// Obtiene el día del mes
+  //diaas de la semana en javascript D L M MI J V S => 0,1,2,3,4,5,6
+  console.log(fecha.getDay())//Obtiene el numero del dia en la semana
+
+  // meses del año en javascript Ene ,Feb,Mar,Abr,May,Jun,Jul,Ago,Sep,Oct,Nov,Dic  => 0,1,2,3,4,5,6,7,8,9,10,11
+  console.log(fecha.getMonth())
+
+  console.log(fecha.getFullYear())//Obtiene el año actual
+  console.log(fecha.getHours())
+  console.log(fecha.getMinutes())
+  console.log(fecha.getSeconds())
+  console.log(fecha.getMilliseconds())
+  console.log(fecha.toString())//Thu Nov 04 2021 08:38:49 GMT-0500 (hora estándar de Colombia)
+  console.log(fecha.toDateString())//Thu Nov 04 2021
+  console.log(fecha.toLocaleString())// 4/11/2021 8:38:49
+  console.log(fecha.toLocaleDateString())// 4/11/2021
+  console.log(fecha.toLocaleTimeString())// 8:38:49
+  console.log(fecha.getTimezoneOffset())// 8:38:49
+  console.log(fecha.getUTCDate())
+  console.log(fecha.getUTCHours())
+  console.log(Date.now())
+
+  let cumpleDiego = new Date(1992,2,19)
+  console.log(cumpleDiego)
+</script>
+</html>
+</html>

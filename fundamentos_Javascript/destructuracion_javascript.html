@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Destructuracion</h1>
+</body>
+
+<script>
+    //Sin utilizar la destructuracion
+   const numeros = [1,2,3];
+   let uno = numeros[0],dos = numeros[1],tres = numeros[2];
+   console.log(uno,dos,tres)
+
+   //Con destructuracion crea dinamicamente las variables asignadoles los valores que vienen en el arreglo u objeto
+   console.log("****************")
+   const [one,two,tree,four] = numeros;
+   console.log(one,two,tree,four);
+
+   const persona ={
+       nombre:"Diego",
+       apellidos:"Osorio Urrea",
+       edad:29
+   }
+
+   //En los objetos el nombre de las variables debe ser igual al de la propiedad y no importa el orden en el que se declaren las variables de los objetos
+   let {nombre,edad,apellidos} = persona;
+   console.log(nombre,edad,apellidos)
+
+
+</script>
+</html>
+</html>

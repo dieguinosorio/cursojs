@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Condicionales</h1>
+</body>
+
+<script>
+  //if se suele utilizar cuando se tienen 2 opciones
+  let edad = 17;
+  if(edad >= 18){
+    console.log('Eres mayor de edad')
+  }
+  else{
+    console.log('Eres menor de edad')
+  }
+
+  //If else, else if // if anidados se utiliza cuando se va a emplear mas de 1 condicion
+  if(edad >= 18){
+    console.log('Eres mayor de edad')
+  }
+  else if(edad === 17){
+    console.log('Te falta un año para ser mayor de edad')
+  }
+  else{
+    console.log('Eres menor de edad')
+  }
+
+  let hora =21
+  if(hora>=0 && hora<=5){
+    console.log("Dejeme dormir")
+  }
+  else if(hora>5 && hora< 12){
+    console.log("Buenos días")
+  }
+  else if(hora > 11 && hora <= 18 ){
+    console.log("Buenas tardes")
+  }
+  else{
+    console.log("Buenas noches")
+  }
+
+  // Condicional ternario
+  let eresMayor = edad >=18 ? "Eres mayor de edad" :'Eres menor de edad'
+  console.log(eresMayor)
+
+  //Switch -case se utilizar donde hay varios valores para una misma variable
+  let dia = 2;
+  switch(dia){
+    case 0:
+      console.log("Domingo")
+    break
+
+    case  1 :
+      console.log("Lunes")
+    break
+
+    case  2 :
+      console.log("Martes")
+    break
+    
+    case  3 :
+      console.log("Miercoles")
+    break
+
+    case  4 :
+      console.log("Jueves")
+    break
+
+    case  5 :
+      console.log("Viernes")
+    break
+
+    case  6 :
+      console.log("Sabado")
+    break
+
+    default:
+      console.log("El día no existe")
+    break;
+    
+  }
+  
+
+</script>
+</html>
+</html>

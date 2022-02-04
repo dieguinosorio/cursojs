@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Clousure / Clousuras</h1>
+</body>
+
+<script>
+    
+/*Las clousuras funciones anidadas dentro de otra funcion 
+Lo que hacen estas funciones anidadas es enlazar y proteger las variables de claradas dentro del scope de la funcion principal 
+Funcionalidades de las clusuras
+1.proteger el acceso a las variables
+  En el ejemplo se puede ver que para acceder a contador se debe ejecutar el clusure incrementar
+  Entonces va a returnar  el valor de contador afectado por lo cual no puedo hacer esto contador1.contador o contador2.contador
+
+2. Tambien se define como fabrica de funciones  
+*/
+
+//De esta manera creamos una clusure que nos permite crear un mensaje por consola dinamicamente
+const estilosPorDefecto = 'color:white;'
+function crearImpresoraMensajes(tipo,estilos){
+    return function mensaje(str){
+        console.log(`%c ${tipo} : ${str}`, estilos+estilosPorDefecto);
+    }
+}
+
+const error = crearImpresoraMensajes('Error','background:red;');
+const warning = crearImpresoraMensajes('Warning','background:orange;');
+const success = crearImpresoraMensajes('Success','background:green;');
+const info = crearImpresoraMensajes('Info','background:blue;');
+
+error('El usuario debe estar logueado');
+warning('Debes ingresar todo en letra minuscula');
+success('El usuario ha sido logueado ');
+info('Este es otro mensaje creado ');
+
+
+//Otra forma de imprimir los mensajes dinamicamente desde un clousure
+
+function crearMensaje(mensaje=''){
+    return {
+        error(){
+            console.log(`%c Error : ${mensaje}`, 'background:red;color:white;');
+        },
+        warning(){
+            console.log(`%c Warning : ${mensaje}`, 'background:orange;color:white;');
+        },
+        success(){
+            console.log(`%c Success : ${mensaje}`, 'background:green;color:white;');
+        },
+        info(){
+            console.log(`%c Info : ${mensaje}`, 'background:blue;color:white;');
+        }
+    }
+}
+
+const testError = crearMensaje("Debes ingresar las credenciales correctamente").error();
+const testWarning = crearMensaje("Valida los datos que esten ok").warning();
+const testSuccess = crearMensaje("Funcion de clusura correcta").success();
+const testInfo = crearMensaje("Este es un mensaje informativo").info();
+
+
+/* Primer versión con múltiples funciones */
+
+function error(str) {
+  console.log(`%c Error: ${str} `, 'background: red; color: white;');
+}
+
+function warning(str) {
+  console.log(`%c Warning: ${str} `, 'background: orange; color: white;');
+}
+
+function exito(str) {
+  console.log(`%c Éxito: ${str} `, 'background: green; color: white;');
+}
+
+/* Segunda versión con clausuras */
+
+function crearImpresoraDeMensajes(tipo, estilos) {
+  return function mensaje(str) {
+    console.log(`%c ${tipo}: ${str} `, estilos);
+  }
+}
+
+const error = crearImpresoraDeMensajes('Error', 'background: red; color: white;');
+const warning = crearImpresoraDeMensajes('Warning', 'background: orange; color: white;');
+const exito = crearImpresoraDeMensajes('Éxito', 'background: green; color: white;');
+
+
+</script>
+</body>
+
+</html>
+
+</script>
+</html>
+</html>

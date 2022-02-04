@@ -1,0 +1,16 @@
+{
+    "cadena":"Diego",
+    "numero":25,
+    "booleano":true,
+    "arreglo":[
+        "correr",
+        "programar",
+        "cocinar" 
+    ],
+    "objeto":{
+        "nombre":"Diego",
+        "apellido":"Osorio",
+        "edad":29
+    },
+    "nulo":null
+}

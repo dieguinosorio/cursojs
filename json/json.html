@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Json en javascript</title>
+</head>
+<body>
+    <h1>JSON  (Javascript Object Notation)</h1>
+
+</body>
+<script>
+/*
+Es un formato ligero de intercambio de datos es decir : 
+Los lenguajes manejan diferentes tipos de programacion PHP no encaja con phyton y con otro entonces el mecanismo por el cual estos se envian informacion es por estos JSON
+Por que todos los lenguajes los interpreta
+
+*/
+const obj = {
+    cadena:'Diego',
+    numero:25,
+    booleano:true,
+    arreglo:[
+        'correr',
+        'programar',
+        'cocinar'
+    ],
+    objeto:{
+        nombre:'Diego',
+        apellido:'Osorio',
+        edad:29
+    },
+    nulo:null
+}
+
+//En conclucion  JSON  es una interfaz para enviar y recibir informacion entre diferentes tipos de lenguajes ya que todos los lenguajes manejan este tipo de notacion
+//En javascript contiene 2 metodos JSON.parse() //Cnvierte un una cadena de texto a un formato que se pueda leer por javascript
+//Y JSON.stringify()  convierte un tipo de dato de javascript a una cadena de texto en formato JSON
+
+console.log(obj)
+//JSON.parse() va convertir un objeto json a un valor que javascrip pueda convertir como objeto,array,bolean,etc
+console.log(JSON)
+
+console.log("*** JSON.parse ***");
+console.log(JSON.parse("{}"));
+console.log(JSON.parse("[1,2,3]"));
+console.log(JSON.parse("true"));
+console.log(JSON.parse("false"));
+console.log(JSON.parse("19"));
+console.log(JSON.parse('"Hola Mundo"'));
+console.log(JSON.parse("null"));
+//console.log(JSON.parse("undefined"));// este no lo lee 
+console.log(JSON.parse('{ "x": 2, "y": 3 }'));
+
+console.log("*** JSON.stringify ***");
+console.log(JSON.stringify({}));
+console.log(JSON.stringify([1, 2, 3]));
+console.log(JSON.stringify(true));
+console.log(JSON.stringify(false));
+console.log(JSON.stringify(19));
+console.log(JSON.stringify("Hola Mundo"));
+console.log(JSON.stringify(null));
+console.log(JSON.stringify(undefined));
+console.log(JSON.stringify({ x: 2, y: 3 }));
+
+console.log(JSON.stringify(obj)); //Convierte el objeto a un string
+
+//Convierte un string a un objeto javascript
+console.log(JSON.parse('{"cadena":"Diego","numero":25,"booleano":true,"arreglo":["correr","programar","cocinar"],"objeto":{"nombre":"Diego","apellido":"Osorio","edad":29},"nulo":null}'))
+
+
+
+</script>
+</html>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuevos tipos de datos</title>
+</head>
+<body>
+    <h1> Proxies </h1>
+
+</body>
+<script>
+//Es un nuevo mecanismo de javascript que permite crear un objeto basado en otro  objeto literal inicial es decir crear un copia del anterior
+//El proxi hace una vinvulacion entre el objeto original, el objeto copia y a travez de su objeto manejador hace las validaciones antes de copiar los datos
+
+const persona = {
+    nombre:'',
+    apellido:'',
+    edad:0
+}
+
+//El manejador va manejar todas las validaciones para que el nuevo objeto tenga las mismas propiedades del objeto literal copiado
+//Por ejemplo en el set recibimos 3 variables : 1 el objeto, 2 la propiedad y el valor entonces el metodo set va ser el encargado de validar y llenar los nuevos valores con el metodo set
+
+const manejador= {
+    set(obj,prop,valor){
+        if(Object.keys(obj).indexOf(prop) === -1) return console.error(`La propiedad ${prop} no existe en el objeto inicial`);
+
+        if(typeof obj[prop] !== typeof valor) return console.error(`El tipo de dato para la propiedad ${prop} es ${ typeof obj[prop] } el que estas ingresando es ${ typeof valor } ${valor} `);
+
+        if((prop === 'nombre' || prop === 'apellido') && !/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/g.test(valor)) return console.error(`El tipo de dato para la propiedad ${prop} no es permitido, solo acepta letras o espacios en blanco`);
+         
+        if(prop === 'edad' && (!Number.isInteger(valor) || Math.sign(valor) === -1 ))  return console.error(`La propiedad ${prop} no es valida solo acepta numeros enteros positivos`);
+       
+        obj[prop] = valor; //en este caso el objeto es : persona[nombre] = 'Luisa',persona[apellido] = 'Montoya',persona[edad] =26
+        
+        
+    }
+}
+
+//Proxy se ejecuta sobre 2 propiedades el objeto y handler(manejador) que es el metodo de las validaciones con el metodo set
+const luisa = new Proxy(persona,manejador)
+luisa.nombre = "Luisa"
+luisa.apellido ="Montoya"
+luisa.edad = -26
+luisa.instragram ="@luiialexad" //Podemos agregar nuevas propiedades al objeto
+
+console.log(luisa)
+console.log(persona)
+
+//Imprime el primero que es una instancia del proxi y el segundo que es el original que siempre estara vinculado al primero
+//Proxy {nombre: 'Luisa', apellido: 'Montoya', edad: 26, instragram: '@luiialexad'}
+//{nombre: 'Luisa', apellido: 'Montoya', edad: 26, instragram: '@luiialexad'}
+</script>
+</html>
+</html>

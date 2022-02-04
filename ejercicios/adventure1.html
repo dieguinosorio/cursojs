@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Modulos en Ejercicios 1</title>
+</head>
+<body>
+    <h1> Ejercicios #1 </h1>
+    <p>
+        Considera una lista/array de ovejas. Cada oveja tiene un nombre y un color. Haz una función que devuelva una lista con todas las ovejas que sean de color rojo y
+         que además su nombre contenga tanto las letras n Y a, sin importar el orden, las mayúsculas o espacios.
+    </p>
+</body>
+<script>
+/*const ovejas = [
+  { name: 'Noa', color: 'azul' },
+  { name: 'Euge', color: 'rojo' },
+  { name: 'Navidad', color: 'rojo' },
+  { name: 'Ki Na Ma', color: 'rojo'},
+  { name: 'AAAAAaaaaa', color: 'rojo' },
+  { name: 'Nnnnnnnn', color: 'rojo'}
+]
+
+function contarOvejas(ovejas) {
+  // aquí tu magia
+  ovejas = ovejas.filter(oveja=> oveja.color ==='rojo' && /na/ig.test(oveja.name))
+  return ovejas
+}
+
+const ovejasFiltradas = contarOvejas(ovejas)
+
+console.log(ovejasFiltradas)Array*/
+
+/*const carta = 'bici coche balón _playstation bici coche peluche'
+
+function listGifts(letter) {
+    // ¡Tú puedes!
+    letter = letter.trim().split(' ').reduce(function (allNames, name) {
+    if(!name.includes('_')){
+        if (name in allNames) {
+            allNames[name]++
+        }
+        else {
+            allNames[name] = 1
+        }
+    }
+    return allNames
+    }, {})
+    
+    return letter
+}
+
+const regalos = listGifts(carta)
+
+console.log(regalos)*/
+
+/*let arr = [
+    "bici coche (balón) bici coche peluche",
+    "(muñeca) consola bici" ,
+    "bici coche (balón bici coche",
+    "peluche (bici [coche) bici coche balón",
+    "(peluche {) bici" ,
+    "() bici",
+];
+
+function isValid(letter){
+    let valid = /\(([A-Za-zñÑáÁéÉíÍóÓúÚ]+)\)/.test(letter) && !letter.includes('()')
+    return valid;
+}
+
+for(let val of arr){
+    console.log(isValid(val))
+}*/
+
+/*function createXmasTree(height) {
+  // ¡Y no olvides también poner los turrones!
+  let guion = '_',asterisco = '*', tronco = '#';
+  let strArbol = '';
+  for(let i =1; i<=height;i++){
+    strArbol = strArbol.concat(guion.repeat(height-i)).concat(asterisco.repeat(i+i-1)).concat(guion.repeat(height-i),'\n');
+  }
+  strArbol = strArbol.concat(guion.repeat(height-1),tronco,guion.repeat(height-1),'\n');
+  strArbol = strArbol.concat(guion.repeat(height-1),tronco,guion.repeat(height-1));
+  return strArbol;
+}
+
+console.log(createXmasTree(10))*/
+
+
+/*function daysToXmas(date) {
+  // ¡Y no olvides compartir tu solución en redes!  Revisa que cuentas bien los días aunque sea a las 23:59:59 horas... 😝
+  let dateNavidad = new Date('Dec 25, 2021');
+  let diff = (dateNavidad.getTime() - date.getTime());
+  var day = 1000 * 60 * 60 * 24;
+  return Math.ceil(diff/day);
+}
+console.log(daysToXmas(new Date('Dec 24, 2021 23:59:59')))*/
+
+
+/*function sumPairs(numbers, result) {
+  // ¡Y no olvides compartir tu solución en redes!
+  let trueSearch = false;
+  let i =0;
+  let numIni = null;
+  let numFin = null;
+  while(trueSearch === false){
+    numIni = numbers[i];
+    for(let e =i+1 ;e<numbers.length;e++){
+        if((numIni + numbers[e]) === result){
+            numFin = numbers[e];
+            trueSearch = true;
+            break;
+        }
+    }
+    i++;
+    if(i-1 === numbers.length) break;
+  }
+  return numFin ? [numIni,numFin] : null
+}
+
+console.log(sumPairs([3, 5, 7, 2], 10)) // [3, 7]
+console.log(sumPairs([-3, -2, 7, -5], 10)) // null
+console.log(sumPairs([2, 2, 3, 1], 4)) // [2, 2]
+console.log(sumPairs([6, 7, 1, 2], 8)) // [6, 2]
+console.log(sumPairs([0, 2, 2, 3, -1, 1, 5], 6)) // [1, 5]*/
+
+
+
+/*function contains(store, product) {
+  // ¡Y no olvides compartir tu solución en redes!
+  const iterator = (obj)=>{
+  let res = [];
+  for(let prop in obj){
+      const chil = obj[prop];
+      if(typeof chil === 'object'){
+        res = [...res,...iterator(chil)]
+      }
+      res = [...res,chil]
+    }
+    return res
+  }
+  let arrProducts = iterator(store).indexOf(product) !== -1 ? true :false;
+  return arrProducts
+}
+
+
+const almacen = {
+  'estanteria1': {
+    'cajon1': {
+      'producto1': 'coca-cola',
+      'producto2': 'fanta',
+      'producto3': 'sprite'
+    }
+  },
+  'estanteria2': {
+    'cajon1': 'vacio',
+    'cajon2': {
+      'producto1': 'pantalones',
+      'producto2': 'camiseta', // <- ¡Está aquí!
+      'tt':{
+        '2':2,
+        '3':9
+      }
+    }
+  }
+}
+            
+console.log(contains(almacen, 'camiseta')) // true
+
+const otroAlmacen = {
+  'baul': {
+    'fondo': {
+      'objeto': 'cd-rom',
+      'otro-objeto': 'disquette',
+      'otra-cosa': 'mando'
+    }
+  }
+}
+  
+console.log(contains(otroAlmacen, 'gameboy')) // false*/
+/*
+Invertir en criptomonedas es casi un deporte de riesgo. El otro día hackearon Bitmart y ha hecho que el valor de Bitcoin, y otras monedas, bajase un 25%.
+
+Vamos a escribir una función que reciba la lista de precios de una criptomoneda en un día y debemos devolver la ganancia máxima que podríamos
+sacar si compramos y vendemos la inversión el mismo día.
+
+La lista de precios es un array de números y representa el tiempo de izquierda a derecha. 
+Por lo que ten en cuenta que no puedes comprar a un precio que esté a la derecha de la venta y no puedes vender a un precio que esté a la izquierda de la compra.
+
+Por ejemplo:
+*/
+/*function maxProfit(prices) {
+  // ¡Y no olvides compartir tu solución en redes!
+  let gain = -1;
+  let arrShopping = prices.slice(0,2);
+  let valShopping = Math.min(...arrShopping);
+  let arrSales = prices.slice(2,prices.length);
+  let valSale = Math.max(...arrSales);
+  gain = (valSale<= valShopping) ? gain : valSale - valShopping;
+  return gain
+}
+
+const pricesBtc = [39, 18, 29, 25, 34, 32, 5]
+console.log(maxProfit(pricesBtc)) // -> 16 (compra a 18, vende a 34)
+
+const pricesEth = [10, 20, 30, 40, 50, 60, 70]  
+console.log(maxProfit(pricesEth)) // -> 60 (compra a 10, vende a 70)
+
+const pricesDoge = [18, 15, 12, 11, 9, 7]
+console.log(maxProfit(pricesDoge))  // -> -1 (no hay ganancia posible)
+
+const pricesAda = [3, 3, 3, 3, 3]
+console.log(maxProfit(pricesAda)) // -> -1 (no hay ganancia posible)*/
+
+/*
+En la fábrica de Papa Noél 🎅 se acerca el día especial... y todavía tenemos un montón de cosas por contar. 😅
+
+Por suerte a Mark Zucktheelf 🧝 se le ha ocurrido crear una función que permita agrupar un array, que puede ser de valores u objetos, a través de una función o de una propiedad.
+
+Nos trae un montón de ejemplos:
+*/
+
+/*function groupBy(collection, it) {
+  // ¡No olvides compartir tu solución en redes!
+  const arrProps = Array.from(new Set(collection.map(e=>{ return typeof it ==='function' ?  it(e) : e[it]})))
+  let agroup = {}
+  for(let i = 0; i< arrProps.length;i++){
+    let data ={[arrProps[i]] : collection.filter(filt =>{  return (filt[it] || it(filt)) === arrProps[i]})};
+    agroup = {...agroup,...data}
+  }
+
+  //let agroup = {}
+  /*for(key of arrProps){
+    let data ={[key] : collection.filter(filt =>{  return (filt[it] || it(filt)) === key})};
+    agroup = {...agroup,...data}
+  }
+  return agroup;
+  
+}*/
+
+/*console.log(groupBy([6.1, 4.2, 6.3], Math.floor)) // { 6: [6.1, 6.3], 4: [4.2] }
+console.log(groupBy(['one', 'two', 'three'], 'length')) // { 3: ['one', 'two'], 5: ['three'] }
+console.log(groupBy([{age: 23}, {age: 24}], 'age')) // { 23: [{age: 23}], 24: [{age: 24}] }
+
+console.log(groupBy(
+  [1397639141184, 1363223700000],
+  timestamp => new Date(timestamp).getFullYear()
+))
+// { 2013: [1363223700000], 2014: [1397639141184] }
+
+console.log(groupBy([
+  { title: 'JavaScript: The Good Parts', rating: 8 },
+  { title: 'Aprendiendo Git', rating: 10 },
+  { title: 'Clean Code', rating: 9 },
+], 'rating'))*/
+
+
+/*
+Para mejorar la productividad de la tienda en la que trabajamos, 
+vamos a crear una pequeña máquina que calcula el mínimo número de monedas que debemos usar para dar el cambio de una compra en metálico.
+Las monedas para cambio que puedes usar son estas:
+
+coins[0] = 1 céntimo
+coins[1] = 2 céntimos
+coins[2] = 5 céntimos
+coins[3] = 10 céntimos
+coins[4] = 20 céntimos
+coins[5] = 50 céntimos
+
+Tenemos que crear una función que recibe el número de céntimos que hay que devolver al cliente
+ y la función nos da un array con la combinación de monedas mínimas que debemos usar para conseguirlo.
+
+La dificultad del reto está en saber utilizar correctamente una estructura que te permita conocer las monedas
+que tienes disponible para crear el array con la devolución, ya que debes usar siempre el menor número de monedas posible. ¡Suerte 👩‍💻👨‍💻!.
+*/
+
+/*function getCoins(change) {
+  // ¡No olvides compartir tu solución en redes!
+  const coins = [1,2,5,10,20,50];
+  const arrResp = new Array(6).fill(0);
+  for (let i = coins.length -1; i >= 0; i--) {
+    if(change >= coins[i]){
+      change -= coins[i];
+      arrResp[i]++
+      i++;
+    }
+  }
+  return arrResp
+}
+
+//combinación de monedas mínimas que debemos usar para conseguirlo.
+
+console.log(getCoins(51)) // [1, 0, 0, 0, 0, 1] -> una moneda de 1 céntimo y otra de 50 céntimos
+console.log(getCoins(3)) // [1, 1, 0, 0, 0, 0] -> una moneda de 1 céntimo y otra de 2
+console.log(getCoins(5)) // [0, 0, 1, 0, 0, 0] -> una moneda de 5 céntimos
+console.log(getCoins(16)) // [1, 0, 1, 1, 0, 0] -> una moneda de 1 céntimo, una de 5 y una de 10
+console.log(getCoins(100)) // [0, 0, 0, 0, 0, 2] -> dos monedas de 50 céntimos*/
+
+
+/*
+Este mes de diciembre hay películas super interesantes en el cine... y tengo que optimizar cómo gasto el dinero.
+Mi cine favorito tiene dos posibilidades:
+• Entrada de un sólo uso: Cuesta 12$ por cada película.
+• Tarjeta de fidelidad: Cuesta 250$ pero que cada vez que vas pagas sólo el 75% del precio del ticket. ¡Lo mejor es que se acumula!
+ Y cada vez que vas, se paga el 75% del precio del ticket que pagaste la última vez.
+
+Ejemplo de cada una al comprar 3 entradas y el precio que pagaría en total:
+// Entrada normal: 12$ * 3 = 36$
+// Tarjeta fidelidad: 250$ + (12$ * 0,75) +  (12$ * 0,75 * 0,75) + (12$ * 0,75 * 0,75 * 0,75) = 270,8125$
+
+Necesito una función que, al pasarle las veces que voy a ir al cine, me diga si vale la pena comprar la tarjeta fidelidad o no.
+
+Necesito una función que, al pasarle las veces que voy a ir al cine, me diga si vale la pena comprar la tarjeta fidelidad o no.
+
+La dificultad del reto está en encontrar una fórmula sencilla que nos diga el precio con descuento acumulado para la tarjeta fidelidad. 😜
+*/
+
+/*function shouldBuyFidelity(times) {
+  const valEntry = 12, valCard = 250,valOnly = (times * valEntry), desc = 0.75;
+  const calcDesc = (arrDesc) =>{
+    let calc = valEntry ,res = valCard ;
+    arrDesc.map(e=>{ 
+      res += (calc = ( calc * e));
+    })
+    return res;
+  }
+  return (calcDesc(new Array(times).fill(desc)) < valOnly)
+}
+
+console.log(shouldBuyFidelity(3)) // false -> Mejor comprar tickets de un sólo uso
+console.log(shouldBuyFidelity(100)) // true -> Mejor comprar tarjeta fidelidad*/
+
+
+/*
+En el taller de Santa 🎅 se están preparando los trineos de motor eléctrico para poder hacer la ruta perfecta para dejar los regalos.
+
+La ruta empieza en el punto 0 y de ahí va hacia la derecha en línea recta.
+
+El Keanu Relfes 🧝 nos ha preparado una lista de obstáculos a evitar. El problema es que nos ha dado la lista de posiciones de los obstáculos desordenada... 
+😅 aunque al menos nunca la posición 0 puede tener un obstáculo.
+
+Encima, el trineo sólo se puede configurar para saltar un número fijo de posiciones... 😱
+
+Necesitamos una función que nos diga la longitud mínima del salto del trineo para ir evitando todos los obstáculos en la ruta.
+
+La dificultad del reto está en pensar que sólo podemos configurar el salto del trineo una vez y que buscamos el salto mínimo que nos serviría para sortear todos los obstaculos.
+*/
+function getMinJump(obstacles) {
+  // ¡No olvides compartir tu solución en redes!
+  const LONG = {1:1,2:2,3:6,4:4,5:10,7:7}
+  let arrRoute = new Array(11).fill(0).map((e,i)=>{ return e[i] = i})
+  const arr1 = arrRoute.slice(0,1),arr2 = arrRoute.slice(arrRoute.length -1,arrRoute.length)
+  for (let i = 0; i < array.length; i++) {
+    
+  }
+  console.log(arrRoute)
+  let newOrder = obstacles.sort((a,b)=>{return a-b});
+  
+  return true
+}
+const obstacles = [5, 3, 6, 7, 9]
+getMinJump(obstacles) // -> 4
+// S es salto, X es obstáculo
+/* Así quedaría la representación:
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+.  .  .  X  .  X  X  X  .  X  . 
+S-----------S-----------S-------
+*/
+
+
+const obstacles2 = [2, 4, 6, 8, 10]
+getMinJump(obstacles2) // -> 7
+/* Así quedaría la representación:
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+.  .  X  .  X  .  X  .  X  .  X 
+S--------------------S---------*/
+
+// Longitudes de salto:
+// 1 caería en el 2
+// 2 caería en el 2
+// 3 caería en el 6
+// 4 caería en el 4
+// 5 caería en el 10
+// 6 caería en el 6
+// 7 es el ideal!!! ✅
+
+</script>
+</html>
+</html>

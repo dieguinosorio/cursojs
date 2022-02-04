@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Programacion Asincrona</title>
+</head>
+<body>
+    <h1> Promesas </h1>
+
+</body>
+<script>
+/*
+    Las promesas trabajan con 2 recursos principales el resolve y el reject, es como un if else 
+*/
+
+//vamos a trabajar con setTimeout para simular una peticion ajax ya que esta simula como si lo fuera.
+// el resolve() es la parte positiva cuando se ejecuta
+//El reject() es la parte negativa osea el else y hace el return negativo
+function cuadradoPromise(value) {
+    if(typeof value !== 'number') return Promise.reject(`el valor ${value} no es un numero`)
+
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve({
+                value,
+                resolve:value * value
+            });
+        }, 0 | Math.random() * 1000);
+    })
+}
+
+cuadradoPromise(0).then((result)=>{
+    console.log('Inicio promesa')
+    console.log(`Promise:${result.value}, valor : ${result.resolve}`)
+    return cuadradoPromise(1)
+})
+.then(result=>{
+    console.log(`Promise:${result.value}, valor : ${result.resolve}`)
+    return cuadradoPromise(2)//Cuando se ejecuta con las demas promesas no se ejecutan
+})
+.then(result=>{
+    console.log(`Promise:${result.value}, valor : ${result.resolve}`)
+    return cuadradoPromise(3)
+})
+.then(result=>{
+    console.log(`Promise:${result.value}, valor : ${result.resolve}`)
+    return cuadradoPromise(4)
+})
+.then(result=>{
+    console.log(`Promise:${result.value}, valor : ${result.resolve}`)
+    return cuadradoPromise()
+})
+.then(result=>{
+    console.log(`Promise:${result.value}, valor : ${result.resolve}`)
+    console.log('Fin Promesa')
+})
+.catch(error=>{
+    console.log(error)
+});
+</script>
+</html>
+</html>

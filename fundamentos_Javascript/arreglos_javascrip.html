@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Arreglos y objetos</h1>
+</body>
+
+<script>
+   const arreglo = [];
+   const arreglo2 = [1,true,'Hola',['a','b','c',[1,2,3]]]
+   console.log(arreglo)
+   console.log(arreglo2)
+   console.log(arreglo2.length)
+   console.log(arreglo2[2])
+   console.log(arreglo2[3][0])
+   console.log(arreglo2[3][3][1])
+
+   const c = Array.of('A',"e") // esta es una nueva forma de asignar elementos a un arreglo
+   console.log(c)
+
+   const d = Array(100).fill(true) // inicializa un arreglo de 100 posiciones o x posiciones y les asigna a todos un valor con fill
+   console.log(d)
+
+   const f = Array(1,2,3,"a");// esta es un forma vieja de crea un arreglo ya no se usa casio
+   console.log(f)
+
+   const colores = ['rojo','amarillo','azul'];
+   console.log(colores)
+   colores.push("Negro");// agrega un nuevo elemento al final del arreglo
+   console.log(colores)
+   colores.pop() // Elimina el ultimo registro de un arreglo
+   console.log(colores);
+    colores.forEach(function(el,index){
+            console.log(el,index)
+    })
+
+    console.log("********************** Objetos **************")
+
+    const persona = {
+        nombre:"Diego",
+        apellidos:"Osorio Urrea",
+        edad:29,
+        jobies:['Correr','Pesas','Pintar'],
+        estadoCivil:true,
+        contacto:{
+            nombre:'luisa',
+            apellido:'montoya',
+            celular:3207708252
+        },
+        saludar:function(){
+            console.log("Hola mundo")
+        },
+        decirMiNombre:function(){
+            console.log(`Hola me llamo ${this.nombre} y mi edad es ${this.edad}`)
+        }
+    }
+
+    console.log(persona.nombre,persona.contacto,persona.contacto.nombre)
+    persona.saludar()
+    persona.decirMiNombre()
+    console.log(Object.keys(persona))// imprime las propiedades
+    console.log(Object.values(persona)) // imprime los valores de las propiedades
+    console.log(persona.hasOwnProperty('nombre'))//Valida si una propiedad existe en un objeto
+</script>
+</html>
+</html>

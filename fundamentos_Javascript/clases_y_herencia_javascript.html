@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Clases y Herencia</h1>
+</body>
+
+<script>
+  class Animal{
+      //El constructor de la clase es un metodo especial que se ejecuta en el momento de instanciar la clase
+      //para crear un objeto del mismo tipo
+      constructor(nombre,genero){
+        this.nombre = nombre;
+        this.genero = genero;
+      }
+
+       //Funciones asignadas al prototipo
+      sonar(){
+        console.log(`Hago sonidos ${this.nombre} ${this.genero}`)
+      }    
+
+      saludar(){
+        console.log(`Hola me llamo ${this.nombre}`)
+      }
+      
+  }
+
+  class Perro extends Animal{
+      constructor(nombre,genero,tamanio){
+        super(nombre,genero)// es un metodo que manda a llamar al constructor de la clase padre en este caso Animal
+        this.tamanio = tamanio;
+      }
+
+      sonar(){
+        console.log(`Hago sonidos ${this.nombre} ${this.genero} metodo modificado desde perro`)
+      }    
+
+      saludar(){
+        console.log(`Hola me llamo ${this.nombre} metodo modificado desde perro`)
+      }
+
+      ladrar() {
+        console.log("Guauuu Guauuu !!!!");
+      } 
+
+  }
+
+  const odie = new Animal('Ody','macho'),katy = new Perro('Katy','Hembra','pequeño');
+  console.log(odie,katy);
+  console.log();
+  odie.sonar();
+  odie.saludar();
+
+  katy.sonar();
+  katy.saludar();
+  katy.ladrar();
+ 
+</script>
+</html>
+</html>

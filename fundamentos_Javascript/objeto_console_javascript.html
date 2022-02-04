@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Objeto Console</h1>
+</body>
+
+<script>
+  console.log(console);
+  console.error("Esto es un mensaje de error")
+  console.warn("Esto es un aviso")
+  console.info("Esto es un mensaje informativo")
+  console.log("Esto es un registro de algo que paso en nuestra app");
+  let nombre ='Diego',apellido='Osorio',edad=29
+  console.log(`Mi nombre es ${nombre} ${apellido}  y mi edad es  ${edad}`)
+  console.log(`Mi nombre es %s %s  y mi edad es  %d`,nombre,apellido,edad)
+  console.clear();
+  console.log(window) //window es el objeto global de javascrip en los navegadores que representa la ventana del navegador
+  console.log(document) //document es la representacion del documento html en javascript
+  console.dir(window)
+  console.dir(document)
+  console.clear();
+  console.group(`Cursos de @dieguinoso en You Tube`)
+  console.log(`POO en PHP`)
+  console.log(`Node js`)
+  console.log(`Laravel`)
+  console.groupEnd();
+
+  console.clear();
+  console.log(console);
+  console.table(Object.entries(console).sort());
+
+  console.groupCollapsed(`Cursos de @dieguinoso en You Tube`)
+  console.log(`POO en PHP`)
+  console.log(`Node js`)
+  console.log(`Laravel`)
+  console.groupEnd();
+  console.clear();
+  const numeros = [1,2,3,4,5],vocales=['a','e','i','o','u']
+  console.table(numeros);
+  console.table(vocales);
+  const perro = {
+    nombre:'odie',
+    edad: 4,
+    sexo:'M'
+  }
+  console.table(perro);
+  console.clear();
+
+  //Esta funcion del objeto console sirve para probar cuanto tiempo tardo en ejecutarse un bloque de codigo
+  //El nombre de la etiqueta time y timeEnd debe ser el mismo
+  console.time("Cuanto tarda mi codigo");
+  const arreglo  =  Array(1000000);
+  for (let index = 0; index < arreglo.length; index++) {
+    arreglo[index] = index;
+  }
+  console.timeEnd("Cuanto tarda mi codigo");
+  //console.log(arreglo)
+
+  for (let i = 0; i <=100; i++) {
+    console.count('codigo for')// sirve para decir cuantas veces se ejecuto un bloque de codigo
+    console.log(i)
+  }
+  console.clear();
+
+  //Sirve para realizar pruebas unitarias en javascript
+  let x=4,y=2,pruebaXy="X siempre debe ser menor que  Y";
+  console.assert(x<y,{x,y,pruebaXy})
+
+</script>
+</html>
+</html>

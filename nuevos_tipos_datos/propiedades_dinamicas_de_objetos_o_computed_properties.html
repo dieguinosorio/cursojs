@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuevos tipos de datos</title>
+</head>
+<body>
+    <h1>  Propiedades Dinámicas de los Objetos </h1>
+
+</body>
+<script>
+// Las popiedades dinamicas o compued properties se utilizan donde a veces tenemos que crear propiedades dinamicas en un objeto por ejempo id_0 : 'Diego'
+//Entonces es alli donde nos servira mucho las propiedades dinamicas como muestra el ejemplo : 
+//Para crear una propiedad dinamica debemos establecerla [] ejemplo [`id_${aleatorio}`] : 'Aleatorio'
+let aleatorio = Math.round(Math.random() * 100 + 5);
+const objUsurios = {
+    propiedad:'valor', //Esta es una propiedad statica
+    [`id_${aleatorio}`] : 'Aleatorio' //Esta es una segunda propiedad dinamica generada con el aleatorio
+}
+const usuarios = ['Diego','Diana','Sandra','Stiven'];
+console.log(objUsurios)
+
+usuarios.forEach((usuario,index) => objUsurios[`id_${index}`] = usuario)
+console.log(objUsurios)
+</script>
+</html>
+</html>

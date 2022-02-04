@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Operador de Cortocircuito</h1>
+</body>
+
+<script>
+   
+    /*
+    Cortocircuito OR - cuando el valor de la izquierda en la expresión siempre pueda validar a true, es el valor que se cargará por defecto
+
+    Cortocircuito AND - cuando el valor de la izquierda en la expresión siempre pueda validar a false, es el valor que se cargará por defecto
+    */
+
+    function saludar(nombre) {
+        nombre = nombre || 'Desconocido'
+        console.log(`Hola ${nombre}`);
+    }
+    saludar("Diego");
+    saludar()
+    //Asigna el primer valor si devuelve verdadero de lo contrario asigna el segundo
+    //En este ejemplo como el primer valor tiene datos retorna true osea cadena que es un dato truthy
+    console.log('cadena'||'otro valor')
+    console.log(9||'otro valor')
+    console.log(true||'otro valor')
+    console.log('4'||'otro valor')
+    console.log([]||'otro valor')
+    console.log({}||'otro valor')
+
+    console.log(false ||'Valor de la derecha')
+    console.log('' ||'Valor de la derecha')
+    console.log(null ||'Valor de la derecha')
+    console.log(undefined ||'Valor de la derecha')
+    console.log(0 ||'Valor de la derecha')
+
+    console.log(false && 'Valor de la derecha')
+    console.log('' && 'Valor de la derecha')
+    console.log(null && 'Valor de la derecha')
+    console.log(undefined && 'Valor de la derecha')
+    console.log(2 && 'Valor de la derecha')
+    console.log(0 && 'Valor de la derecha')
+
+    console.log('cadena'&& 'otro valor')
+    console.log(9&& 'otro valor')
+    console.log(true&& 'otro valor')
+    console.log('4'&& 'otro valor')
+    console.log([]&& 'otro valor')
+    console.log({}&& 'otro valor')
+</script>
+</html>
+</html>

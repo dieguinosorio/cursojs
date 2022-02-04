@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Modulos en Ejercicios 4</title>
+</head>
+<body>
+    <h1> Ejercicios #4 </h1>
+    <p>
+        12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+        13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+        14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+    </p>
+</body>
+<script>
+
+const numeroAleatorio = (num1,num2) =>{
+    if(num1 && num2){
+        return  Math.round(Math.random() * (num2 - num1)) + num1;
+    }
+    console.info("Debes ingresar el numero inicial y el final")
+}
+
+const numeroCapicua = (num) =>{
+    let numRevert = num.toString().split('').reverse().join('');
+    numRevert = parseInt(numRevert);
+    return num === numRevert;
+}
+
+const calcularFactorial = (numFac)=>{
+    if(Number.isInteger(numFac)){
+        let num = 1;
+        for (let i = 1; i <= numFac; i++) {
+            num = num * i;
+        }
+        return num;
+    }
+    else{
+        return false;
+    }
+}
+
+console.log(numeroAleatorio(1,100))
+console.log(numeroCapicua(111))
+console.log(calcularFactorial(5))
+</script>
+</html>
+</html>

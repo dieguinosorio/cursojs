@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Clousure / Clousuras</h1>
+</body>
+
+<script>
+//Las clousuras funciones anidadas dentro de otra funcion 
+/*Lo que hacen estas funciones anidadas es enlazar y proteger las variables de claradas dentro del scope de la funcion principal */
+/*
+Funcionalidades de las clusuras
+1.proteger el acceso a las variables
+  En el ejemplo se puede ver que para acceder a contador se debe ejecutar el clusure incrementar
+  Entonces va a returnar  el valor de contador afectado por lo cual no puedo hacer esto contador1.contador o contador2.contador
+2. Tambien se define como fabrica de funciones 
+   
+*/
+/*function crearContador(){
+    let contador = 0;
+
+    return function incrementar(){
+        return contador ++;
+    }
+}*/
+
+
+//Cuando creo una instancia de una clusura esta va guardar la foto de la primera ves que se ejecuto
+/*const contador1 = this.crearContador();
+console.log(contador1());
+console.log(contador1());
+console.log(contador1());
+
+//Cuando creo una segunda instancia vuelve a tomar los datos iniciales del contexto en donde se definio la clousura
+//Entonces contador1 y contador2 son independientes
+const contador2 = this.crearContador();
+console.log(contador2());
+console.log(contador2());
+
+console.clear();
+
+/*
+Otra forma de expresarlo es que una clousure nos dice de que manera podemos interactuar con un objeto pero protegiendo las variables internas del la funcion
+
+*/
+/*function crearContador2(){
+    let contador = 0;
+
+    return {
+        incrementar:function(){
+            return contador ++;
+        },
+        decrementar:function(){
+            return -- contador;
+        },
+
+        obtenerValor:function(){
+            return contador;
+        }
+    }
+}
+
+const count = crearContador2();
+
+/*console.log(count.obtenerValor())
+count.incrementar();
+console.log(count.obtenerValor())
+count.incrementar();
+console.log(count.obtenerValor())
+count.decrementar();
+console.log(count.obtenerValor())*/
+/*console.clear();
+
+function crearContador3(contador =0){
+    return {
+        incrementar:function(){
+            return contador ++;
+        },
+        decrementar:function(){
+            return contador = contador -1;
+        },
+
+        obtenerValor:function(){
+            return contador;
+        }
+    }
+}
+
+
+const cont3 = crearContador3(10);
+console.log(cont3.obtenerValor())*/
+
+function mensaje(mensaje){
+    return {
+        error:function(){
+            console.log(`%c ${mensaje}`,'backgroun:red; color:white')
+        },
+        alerta(){
+            console.log(`%c ${mensaje}`,'backgroun:orange; color:white')
+        },
+        exito(){
+            console.log(`%c ${mensaje}`,'backgroun:green; color:white')
+        }
+    }
+}
+
+const msg = mensaje('Error del sistema');
+msg.error();
+
+</script>
+</body>
+
+</html>
+
+</script>
+</html>
+</html>

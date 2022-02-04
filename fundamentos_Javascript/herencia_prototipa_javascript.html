@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Herencia Prototipa</h1>
+</body>
+
+<script>
+  // Los Prototipos es un mecanismo por el cual un objeto puede heredar propiedades, atributos y metodos de un metodo padre
+
+  //POO
+  /*
+  Clases - Modelo a seguir 
+  Objetos - Son instancias de clases
+    Atributos - Son una caracteristica o propiedad del objeto // son variables dentro de un objeto
+    Metodos - Son las acciones que un objeto puede realizar // functiones que se puede ejecutar y reutilizar
+  */
+
+    /*const animal = {
+      nombre:'Snoopy',
+      sonar(){
+          console.log("Hago sonidosss")
+      }
+    }
+  
+    const animal2 = {
+      nombre:'Scobbye',
+      sonar(){
+          console.log("Hago sonidosss")
+      }
+    }
+    console.log(animal)
+    console.log(animal2)*/
+    //{nombre: 'Snoopy', sonar: ƒ}
+    //{nombre: 'Scobbye', sonar: ƒ}
+
+    //Lo anterior no es funcional para eso creamos y se crearon las clases
+
+  //Funcion Constructora
+  /*function Animal(nombre,genero){//Las funciones constructuras dependen del this que hace referencia a los atributos o metodos de la funcion constructora
+    //Atributos
+    this.nombre = nombre;
+    this.genero = genero;
+
+    //Funciones
+    this.sonar = function(){
+        console.log(`HAgo sonidos ${this.nombre} ${this.genero}`)
+    }    
+
+    this.saludar =function(){
+        console.log(`Hola me llamo ${this.nombre}`)
+    }
+  }*/
+  //Lo ideal es que las funciones constructoras solo tengan los atributos  y los metodos los peguemos al prototipo, ejemplo abajo
+
+    //Las funciones constructura donde asignamos los metodos al prototipo y no a la funcion
+  function Animal(nombre,genero){
+      //Atributos
+      this.nombre = nombre;
+      this.genero = genero;
+  }
+  //Funciones asignadas al prototipo
+  Animal.prototype.sonar = function(){
+    console.log(`Hago sonidos ${this.nombre} ${this.genero}`)
+  }    
+
+  Animal.prototype.saludar =function(){
+    console.log(`Hola me llamo ${this.nombre}`)
+  }
+
+
+  //Herencia Prototípica
+  function Perro(nombre, genero, tamanio) {
+      this.super = Animal;
+      this.super(nombre, genero);
+      this.tamanio = tamanio;
+  } 
+
+  //Perro está heredando de Animal
+  Perro.prototype = new Animal();
+  Perro.prototype.constructor = Perro; 
+
+  //Sobreescritura de métodos del Prototipo padre en el hijo
+  Perro.prototype.sonar = function () {
+    console.log("Soy un perro y mi sonido es un ladrido");
+  }
+  Perro.prototype.ladrar = function () {
+    console.log("Guauuu Guauuu !!!!");
+  } 
+
+  const snoopy = new Perro('Snoopy','Macho','Mediano'), scooby = new Animal('Scooby','Macho');
+
+ 
+  console.log(snoopy)
+  console.log(scooby)
+
+  //Con esto creamos una funcion constructora que nos dira de que tipo esta instanciado un objeto  y podremos crear x cantidad de animales de tipo Animal
+  snoopy.sonar();
+  snoopy.saludar();
+  snoopy.ladrar();
+  
+  console.log('****************');
+
+  scooby.sonar();
+  scooby.saludar();
+  //De esta manera si esta mejor codificada que la primera, pero tampoco es optima porque por cada animal que cree van haber 2 metodos o x metodos que tenga la funcion animal.
+  
+
+</script>
+</html>
+</html>

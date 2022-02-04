@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuevos tipos de datos</title>
+</head>
+<body>
+    <h1> Maps </h1>
+
+</body>
+<script>
+/*
+    Son objetos que nos permiten tener una relacion llave valor "nombre => 'diego'" 
+    Traen por defecto funciones como para buscar facilmente un valor get y para modificar set, o eliminar con delete o validar si existe una key con has
+
+    Guardar una colecion de datos que esten relacionados
+    const quiere decir que la variable no va cambiar de tipo de dato aunque sus pripiedades y atributos puedan cambiar
+*/
+const mapa = new Map();
+
+mapa.set('nombre','Diego');
+mapa.set('apellido','Osorio');
+mapa.set('edad',29);
+
+console.log(mapa);
+console.log(mapa.size); // 3 //Obtiene el numero de elementos
+console.log(mapa.has('correo'));//false valida si existe una key
+console.log(mapa.has('nombre'));//true
+console.log(mapa.get('nombre'));//Diego, obtiene el valor de una propiedad
+mapa.set('nombre','estiven')
+console.log(mapa.get('nombre'))
+mapa.delete('apellido')
+console.log(mapa)
+mapa.set('funcion',true)
+console.log(mapa)
+for(let[key,value] of mapa){
+    console.log(`Llave : ${key}, valor : ${value} `)
+}
+
+const mapa2 = new Map([['nombre','diego'],['apellido','Osorio'],['edad',29]]);
+console.log(mapa2)
+
+const llavesMapa = [...mapa2.keys()]
+const valoresMapa = [...mapa2.values()]
+
+console.log(llavesMapa)
+console.log(valoresMapa)
+</script>
+</html>
+</html>

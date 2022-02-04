@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Métodos estáticos, getters y setters</h1>
+</body>
+
+<script>
+  class Animal{
+      //El constructor de la clase es un metodo especial que se ejecuta en el momento de instanciar la clase
+      //para crear un objeto del mismo tipo
+      constructor(nombre,genero){
+        this.nombre = nombre;
+        this.genero = genero;
+      }
+
+       //Funciones asignadas al prototipo
+      sonar(){
+        console.log(`Hago sonidos ${this.nombre} ${this.genero}`)
+      }    
+
+      saludar(){
+        console.log(`Hola me llamo ${this.nombre}`)
+      }
+      
+      static queEres(){//Los metodos estaticos son metodos que se puede usar sin instanciar la clase
+        console.log(`Los perros somos mamiferos, pertenecemos a la familia de caninos, y somos el amigo del hombre`)
+      }
+  }
+
+  class Perro extends Animal{
+      constructor(nombre,genero,tamanio){
+        super(nombre,genero)// es un metodo que manda a llamar al constructor de la clase padre en este caso Animal
+        this.tamanio = tamanio;
+        this.raza =null;
+      }
+
+      sonar(){
+        console.log(`Hago sonidos ${this.nombre} ${this.genero} metodo modificado desde perro`)
+      }    
+
+      saludar(){
+        console.log(`Hola me llamo ${this.nombre} metodo modificado desde perro`)
+      }
+
+      ladrar() {
+        console.log("Guauuu Guauuu !!!!");
+      } 
+      //Getters y setters son metodos especiales que nos permiten 
+      //modificar y obtener valores de las propiedades de nuestra clase
+
+      get getRaza(){
+        return this.raza;
+      }
+
+      set setRaza(raza){
+        this.raza = raza;
+      }
+  }
+
+  const odie = new Animal('Ody','macho'),katy = new Perro('Katy','Hembra','pequeño');
+  Perro.queEres();// ejecutamos el metodo estatico
+
+  // si lo dejamos con parentesis saca error se deben manejar como atributos
+  console.log(odie)
+  console.log(katy)
+  console.log(katy.getRaza)
+  katy.setRaza = 'bull Dog'
+  console.log(katy.getRaza)
+</script>
+</html>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Programacion Asincrona</title>
+</head>
+<body>
+    <h1> CallBack</h1>
+
+</body>
+<script>
+/*
+    CallBack(LLamada de vuelta) Es una funcion que se va ejecutar despues de que otra lo haga
+*/
+//vamos a trabajar con setTimeout para simular una peticion ajax ya que esta simula como si lo fuera.
+function cuadradoCallBack(value,callback) {
+    setTimeout(() => {
+        callback(value,value * value);
+    }, 0 | Math.random() * 1000);
+}
+
+cuadradoCallBack(0,(value,result)=>{
+    console.log("Inicia callback");
+    console.log(`Callback : ${value}, ${result}`)
+    cuadradoCallBack(1,(value,result)=>{
+        console.log(`Callback : ${value}, ${result}`)
+        cuadradoCallBack(2,(value,result)=>{
+            console.log(`Callback : ${value}, ${result}`)
+            cuadradoCallBack(3,(value,result)=>{
+                console.log(`Callback : ${value}, ${result}`)
+                cuadradoCallBack(4,(value,result)=>{
+                    console.log(`Callback : ${value}, ${result}`)
+                    cuadradoCallBack(5,(value,result)=>{
+                        console.log(`Callback : ${value}, ${result}`)
+                    })
+                })
+            })
+        })
+    })
+})
+</script>
+</html>
+</html>

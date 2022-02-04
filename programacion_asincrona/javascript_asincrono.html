@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Programacion Asincrona</title>
+</head>
+<body>
+    <h1> Asincronia Javascript</h1>
+</body>
+<script>
+/*
+ Procesamiento Single Thread y Multi Thread : 
+  *Single Thread habla sobre el event loop El bucle de eventos funciona haciendo una solicitud a algún "proveedor de eventos" interno o externo, luego llama al controlador de eventos correspondiente.
+   Javascript trabaja sobre un mimo ilo no es multi ilo este ilo es el event loop lo que hace es despachar peticion a peticion sobre el mismo ilo
+  *Multi Thread hace referencia a los lenguajes que trabajan sobre multiples ilos al mismo tiempo.
+ 
+  
+  Operaciones de CPU  y Operaciones de i/o
+  *Operaciones de CPU : Son aquellas que van a pasar mucho mas tiempo consumiendo memoria de la cpu por ejemplo :
+   cuando un ciclo no se rompe por error el sistema se va quedar consumiendo memoria ejecutando ese ciclo hasta que colapsa.
+
+  Operaciones de entrada o salida (i/o) input / out
+    Son aquellas operaciones que van a pasar la mayoria de tiempo esperando la peticion del recurso que se ha solicitado, por ejemplo:
+    Cuando enviamos un formulario a que se almacene en el servidor y que nos mande la notificacion de que se ha almacenado o por ejemplo cuando estamos haciendo un pago en linea
+    estamos esperando a que el api cobre y nos arroje el resultado de la transaccion.
+    Javascript trabaja normalmente sobre operaciones de entrada y salida.
+
+  Operaciones concurrentes y Paralelas.
+   Concunrrencia es cuando 2 o mas tareas progresan simultaneamente es decir se estan ejecutando al mismo tiempo y van avansando simultaneamente.
+   Paralelismo es cuando 2 o mas tareas se ejecutan al mismo tiempo.
+   en efecto parecieran lo mismo pero en el casi de  Single Thread y Multi Thread javascriop trabaja con concurrentes(Single Thread) y los lenguajes multi(Multi Thread) trabajan con paralelismo
+
+   Operaciones bloqueantes y no bloqueantes
+   * una operacion bloqueante es aquella que no va devolver el control  ala aplicacion hasta que alla terminado toda su tarea.
+   * las no bloqueantes son aquellas que devuelven inmediatamente el control habiendo o no terminado su ejecucion/tarea.
+   * 
+   
+   Operaciones sincronas y asincronas (se refiere a cuando tendra lugar la respuesta).
+   *Operaciones sincronas  se refiere a que las respuestas suceden en el presente de inmediato 
+   *Operaciones asincronas se refiere a las respuestas que suceden en un futuro  es decir se ejecuta pero no se sabe cuando va venir la respuesta, es decir
+   la asincrona no va esperar el resultado osea no bloquea el sistema suelta el control y lo devuelve al ilo inicial.
+
+ */
+
+/**
+ * En javascript trabajamos con (Codigo Sincrono Bloqueante y Codigo Asincrono No Bloqueante)
+ */
+
+ //Javascript usa un modelo asíncrono y no bloqueante, con un loop de eventos implementado en un sólo hilo, (single thread) para operaciones de entrada y salida (input/output)
+ /*Codigo Bloqueante*/
+//Esta es una funcion anonima autoejecutable
+(()=>{
+    console.log("Código Sincrono")
+    console.log("Inicio")
+    function dos() {
+        console.log("Dos")
+    }
+    function uno() {
+        console.log("Uno")
+        dos();
+        console.log("Tres")
+    }
+    uno()
+    console.log("Fin")
+})();
+
+//Resultado
+/*Código Sincrono
+Inicio
+Uno
+Dos
+Tres
+Fin*/
+
+console.log('*******************');
+
+ /*Codigo No Bloqueante*/
+//Esta es una funcion anonima autoejecutable
+
+ /*Codigo No Bloqueante*/
+//Esta es una funcion anonima autoejecutable
+(()=>{
+    console.log("Código Sincrono");
+    console.log("Inicio");
+    function dos() {
+        setTimeout(() => {
+            console.log("Dos");
+        }, 2000);
+    }
+    function uno() {
+        setTimeout(() => {
+            console.log("Uno") 
+        }, 0);
+        dos();
+        console.log("Tres");
+    }
+    uno();
+    console.log("Fin");
+})()
+/**Los setTimeout se ejecutan al final ya que pasan a una lista de (callback queue) cola de devolución de llamada ya que los setTimeout,REQUESTS,ETC devuelven una llamada callback
+ * entonces esto hace que se ejecuten los console y al final se ejecutan los callback
+ * Código Sincrono
+   Inicio
+   Tres
+   Fin
+   Uno
+   Dos
+ * */
+
+</script>
+</html>
+</html>

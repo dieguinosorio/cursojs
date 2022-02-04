@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Parametros Rest y operador Spread</h1>
+</body>
+
+<script>
+    function sumar(a,b,...c){// el parametro rest se define en una funcion con ... eso quiere decir que ese parametro recibe varios argumentos/ valores 
+        let resultado = a + b;
+        c.forEach(function(n){
+            resultado += n;
+        })
+        return resultado;
+    }
+    console.log(sumar(1,2,1,5))
+    
+    //Operador Spread o operador de propagacion
+    const arr1 =[1,2,3,4,5], arr2 = [6,7,8,9,0];
+    console.log(arr1,arr2);
+    const arr3 = [arr1,arr2];
+    console.log(arr3)//Crea un arreglo de 2 posiciones
+    //Ejemplo con Spread operator
+    const arr4 = [...arr1,...arr2];
+    console.log(arr4)
+
+    const diego = {
+        nombre:"Diego Osorio",
+        apellidos:'Urrea',
+        edad:29
+    }
+
+    const stiven = {
+        nombrea:"Estive",
+        apellidoss:"Ortiz",
+        edades: 33
+    }
+
+    const objClone = {...diego, ...stiven}
+
+    console.log(objClone);
+
+    var obj1 = { foo: 'bar', x: 42 };
+    var obj2 = { foo: 'baz', y: 13 };
+    const merge = ( ...objects ) =>  ({ ...objects }) ;
+
+    var mergedObj = merge ( obj1, obj2);
+    // Object { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 13 } }
+
+    var mergedObj = merge ( {prueba:''}, obj1, obj2);
+    console.log(mergedObj)
+    // Object { 0: {}, 1: { foo: 'bar', x: 42 }, 2: { foo: 'baz', y: 13 } }
+
+</script>
+</html>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Modulos en Ejercicios 5</title>
+</head>
+<body>
+    <h1> Ejercicios #5 </h1>
+    <p>
+        15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.<br>
+        16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.<br>
+        17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).<br>
+    </p>
+</body>
+<script>
+function clusureGlobal(){
+    return{
+        convertirNumBinarioDeciaml(num,base){
+            let bin = 0;
+            let rem, i = 1, step = 1;
+            let x =num;
+            while (x != 0) {
+                rem = x % 2;
+                x = parseInt(x / 2);
+                bin = bin + rem * i;
+                i = i * 10;
+            }
+            return `${num} base ${base} = ${parseInt(num,base)} Binario : ${bin}`
+        },
+
+        aplicarDescuento(valor,descuento){
+            return (valor - (valor * descuento / 100))
+        },
+
+        calcularAnios(fecha){
+            fecha = new Date(fecha);
+            fechaActual = new Date();
+            return (fechaActual.getFullYear() - fecha.getFullYear())
+        }
+    }
+}
+
+const functiones = clusureGlobal();
+console.log(functiones.convertirNumBinarioDeciaml(111010,2))
+console.log(`Precio con Dcto  ${functiones.aplicarDescuento(1000,19)}`)
+console.log(`Han pasado  ${functiones.calcularAnios('1992,4,23')} años`)
+</script>
+</html>
+</html>

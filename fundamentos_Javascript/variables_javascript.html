@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript</h1>
+</body>
+<script>
+    //Ambito de bloque
+    var hola ="Hola mundo";
+    let hello = "Ello World"
+    console.log(hola)
+    console.log(hello)
+    console.log(window)
+    console.log(window.hola)
+    console.log(window.hello)
+    //El objeto window es el objeto global de la pagina que contiene todas las variables por ejemplo window.hola me muestra "Hola mundo" 
+    // pero window.hello me imprime undefined por que se ejecuta en el mismo bloque que fue definida
+
+    console.log('***************** var *****************')
+    var musica = "Regaee";
+    console.log("Musica antes del bloque",musica);
+    {
+        var musica = "Pop";
+        console.log("Musica dentro del bloque",musica);
+    }
+    console.log("Musica despues del bloque",musica)
+
+    
+    //Diferencia con let
+    console.log('***************** let *****************')
+    let musica2 = "Regaee";
+    console.log("Musica antes del bloque",musica2);
+    {
+        let musica2 = "Pop";
+        console.log("Musica dentro del bloque",musica2);
+    }
+    console.log("Musica despues del bloque",musica2)
+
+    /*Constantes */
+    const PI =  3.1469;
+    console.log(PI)
+    //PI = 5155; No se puede cambiar el valor de una constante siempre y cuando sea primitica ejempo string,number,boolean.
+    
+    let a;
+    a= 45;
+    console.log(a);
+
+    const objeto = {
+        nombre :'Diego',
+        edad:29
+    };
+
+    //Pero si se puede cambiar el valor de una constante compuesta  que son objetos,arreglos,clases,funciones por ejemplo :
+    const Arreglo = ['amarillo','verde','azul'];
+
+    console.log(objeto);
+    console.log(Arreglo);
+
+    objeto.correo ='dieguinosorio@gmail.com';
+    Arreglo.push('Naranja');
+
+    console.log(objeto);
+    console.log(Arreglo);
+
+
+</script>
+</html>

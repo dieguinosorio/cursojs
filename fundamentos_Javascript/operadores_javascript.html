@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Tipos de Operadores</h1>
+</body>
+
+<script>
+   /*Operadores aritmeticos**/
+   let a = 5 +5 - 10 * 3
+   let modulo = 10%2; // el modulo lo que hace es sacar el residuo de una division ejemplo 
+   console.log(a)
+   console.log(modulo)
+
+   /** Relacionales **/
+   console.log(5>0)
+   console.log(5<3)
+   console.log(8>=9)
+   console.log(9<=7)
+   console.log(7<=7)
+
+   // == === !==
+   /*
+    7 == 7
+    true
+    '7' === 7
+    false
+    7===7
+    true
+   */
+   console.log(7 == 7)
+   console.log("7" == 7)
+   console.log(parseInt("7") === 7) // el triple igual valida valores y tipo de dato por ejemplo en este es false por que el primero es un string y el otro es un entero
+
+   //Operadores de incremento y decremento
+   let i =1;
+   //i = i +2;//Con esta sumamos
+   i += 3 //Con esta hacemos lo mismo pero mas simplificada
+   console.log(i)
+   i -= 3 // con esta restamos
+   console.log(i)
+   i /= 2; //Con este lo dividimos
+   console.log(i)
+   i *= 2; //Lo multiplicamos
+   console.log(i)
+   i %= 2; //Sacamos el residio de la division
+   console.log(i)
+
+   /** Operadores unarios **/
+   i++;
+   console.log(i)
+   i--;
+   console.log(i)
+   ++i;
+   console.log(i)
+   --i;
+   console.log(i)
+
+   /*Operadores logicos  !Not, || Or,  && And*/
+
+   /*
+   ! Not: niega es decir lo verdadero lo convierte en false y lo false lo converte en verdadero
+   */
+  console.log(!true) // retorna false
+  console.log(!false) // retorna true
+
+  /*|| Or : Cuando tengo 2 o mas condiciones esperando que al menos una se cumpla*/
+  console.log(( 7==='7' || 7 == 7)) // retorna true por que se cumple 1 condicion
+  console.log(( 7==='7' || 98 == 7)) // retorna false por que no se cumple ninguna condicion
+  /*|| And : Cuando tengo 2 o mas condiciones esperando quese cumplan todas*/
+  console.log(( 7==='7' && 7 == 7)) // retorna false por que no se cumplen las 2
+  console.log(( 7===7 || '7' == 7)) // retorna true por que no se cumplen las 2
+
+
+</script>
+</html>
+</html>

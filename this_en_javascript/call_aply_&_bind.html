@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>This en javascript</title>
+</head>
+<body>
+    <h1>  Call, apply, bind </h1>
+
+</body>
+<script>
+/*
+Los call, apply, bind nos sirven para guardar referencia en un scope es decir que el objeto this conserve el valor de un scope dentro de un bloque 
+Anteriormente para hacer esto era que al inicio del scope se detablara una variable { let me  = this }
+
+En conclucion Call, apply, bind sirven para llamar metodos propiedades o clases en un contexto diferente al que estamos trabajando como lo muentran los ejemplos 
+Creados abajo
+*/
+
+console.log(this);
+this.lugar = 'Contexto Global';
+
+function saludar(saludo ='Hola ',aQuien='Odie'){
+    console.log(`${saludo} ${aQuien} desde el ${this.lugar}`)
+}
+
+saludar();
+
+const obj = {
+    lugar:'Conexto Objeto'
+}
+
+//Call y aply tienes la misma funcionalidad la diferencia es que los parametros de aply se pasan como un arreglo
+saludar.call(obj,'Hola','Diego') //Conexto Objeto
+saludar.call(null,'Hola','Diego') //Si no lo instanciamos desde un objeto lo hace de forma global
+saludar.call(this,'Hola','Diego') //Si le ponemos this tambien lo hace de forma global
+
+saludar.apply(obj,['Adios','Diego']) //Conexto Objeto
+saludar.apply(null,['Adios','Diego']) //Si no lo instanciamos desde un objeto lo hace de forma global
+saludar.apply(this,['Adios','Diego']) //Si le ponemos this instanciamos y no desde un objeto lo hace de forma global
+
+const persona = {
+    nombre:'Diego',
+    saludar:function(){//Si lo usamos con arrow funcions va imprimir Hola undefined por que nombre no esta definido en el contexto global
+        console.log(`Hola ${this.nombre}`)
+    }
+}
+
+persona.saludar();
+this.nombre ='Window'
+//saludar:persona.saludar me hereda esa funcion pero no el contexto por ejemplo si imprimo saludar me arroja Hola undefined
+//Con el metodo bind lo que hacemos es unir un objeto a una funcion y su scope o contexto como el siguiente ejemplo
+//Al objeto otraPersona le agregamos la propiedad saludar y con el objeto bind(persona) lo que hace es traer el contexto completo del objeto persona 
+//y el objeto persona tiene la propiedad nombre enotnces cuando llame la funcion otraPersona.saludar() Hola Diego
+const otraPersona = {
+    saludar:persona.saludar.bind(persona)
+    //saludar:persona.saludar.bind(this) //Si hago esto me buscara en el objeto window la propiedad nombre 
+}
+
+otraPersona.saludar(); // Hola undefined ya que nombre no esta definido en el contexto de otraPersona antes de agregarle el bind
+
+
+
+
+
+
+</script>
+</html>
+</html>

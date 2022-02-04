@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Boleans</h1>
+</body>
+
+<script>
+  let verdadero = true
+  let falso = false
+  let v = Boolean(true)
+  let f = Boolean(false)
+  console.log(verdadero,falso,v,f)
+  console.log(typeof verdadero,typeof falso)
+  //Cualquier dato que contenga caracteres diferente a 0 se convierte en true
+  console.log(Boolean(0)) //El 0 es un valor que se convierte en falso
+  console.log(Boolean(-7)) //es un valor que se convierte en true
+  console.log(Boolean(7)) // es un valor que se convierte en true
+  console.log(Boolean(1)) //El 0 es un valor que se convierte en true
+  console.log(Boolean('')) //El 0 es un valor que se convierte en true
+  console.log(Boolean(' ')) //El 0 es un valor que se convierte en true
+
+/**<h1>Valores: Truthy & Falsy</h1>
+ 
+¿Qué valores Boolean nos devuelve como “Falso”?*/
+
+Boolean(0); //false
+Boolean(null); //false
+Boolean(NaN); //false
+Boolean(undefined); //false
+Boolean(false); //false
+Boolean(""); //false
+
+//¿Qué valores Boolean nos devuelve como “Verdadero”?
+
+Boolean(1); //true para 1 o cualquier número diferente de cero (0).
+Boolean("a"); //true para cualquier carácter o espacio en blanco en el string.
+Boolean([]); //true aunque el array esté vacío.
+Boolean({}); //true aunque el objeto esté vacío
+Boolean(function(){});//Cualquier función es verdadera también
+</script>
+</html>
+</html>

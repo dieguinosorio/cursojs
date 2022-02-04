@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Modulos en Ejercicios 7</title>
+</head>
+<body>
+    <h1> Ejercicios #7 </h1>
+    <p>
+        18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.<br>
+        19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.<br>
+        20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+</body>
+<script>
+const tipoLetras = (str = '') =>{
+    if(!str) return console.warn('Debes ingresar un string')
+
+    if(typeof str !=='string') return console.warn(`${str} no es una cadena de texto`)
+    str =str.toLowerCase()
+    return {
+        vocales(){
+            let totalVocales =0;
+            for (let letra of str) {
+                let expReg = /[aeiouáéíóú]/
+                if(expReg.test(letra)){
+                    totalVocales++;
+                }
+            }
+            return totalVocales;
+        },
+
+        consonantes(){
+            let totalConsonantes =0;
+            for (let letra of str) {
+                let expReg = /[bcdhjklmnpqrstvwxyz]/
+                if(expReg.test(letra)){
+                    totalConsonantes++;
+                }
+            }
+            return totalConsonantes
+        },
+        
+        obtenerTipos(){
+            return `Vocales ${this.vocales()} Consonates ${this.consonantes()}`
+        }
+    }
+}
+
+const validarNombre = (strNombre) =>{
+    if(!strNombre) return console.warn('Debes ingresar un string')
+
+    if(typeof strNombre !=='string') return console.warn(`${strNombre} no es una cadena de texto para nombre valido`) 
+    //test valida si se cumple o no
+    let regExp = /^[A-Za-zñÑ\s]+$/g.test(strNombre)
+    return regExp ? `${strNombre} es un numbre valido ` : `${strNombre} no es un numbre valido ` ;
+}
+
+const validarEmail = (strEmail) =>{
+    if(!strEmail) return console.warn('Debes ingresar un string')
+
+    if(typeof strEmail !=='string') return console.warn(`${strEmail} no es una cadena de texto para nombre valido`) 
+    //test valida si se cumple o no
+    let regExp = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(strEmail)
+    return regExp ? `${strEmail} es un email valido ` : `${strEmail} no es un email valido ` ;
+}
+console.log(tipoLetras("Hola mundo2").obtenerTipos())
+console.log(validarNombre('Diego Osorio,'))
+console.log(validarEmail('diego@email.com'))
+</script>
+</html>
+</html>

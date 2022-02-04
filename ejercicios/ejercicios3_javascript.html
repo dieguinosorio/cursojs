@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Modulos en Ejercicios 3</title>
+</head>
+<body>
+    <h1> Ejercicios #3 </h1>
+    <p>
+        9) Programa una función que obtenga un numero aleatorio entre 501 y 600.<br>
+        10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.<br>
+        11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.<br>
+
+    </p>
+</body>
+<script>
+
+const numeroAleatorio = (num1,num2) =>{
+    if(num1 && num2){
+        return  Math.round(Math.random() * (num2 - num1)) + num1;
+    }
+    console.info("Debes ingresar el numero inicial y el final")
+}
+
+const numeroCapicua = (num) =>{
+    let numRevert = num.toString().split('').reverse().join('');
+    numRevert = parseInt(numRevert);
+    return num === numRevert;
+}
+
+const calcularFactorial = (numFac)=>{
+    if(Number.isInteger(numFac)){
+        let num = 1;
+        for (let i = 1; i <= numFac; i++) {
+            num = num * i;
+        }
+        return num;
+    }
+    else{
+        return false;
+    }
+}
+
+console.log(numeroAleatorio(1,100))
+console.log(numeroCapicua(111))
+console.log(calcularFactorial(5))
+</script>
+</html>
+</html>

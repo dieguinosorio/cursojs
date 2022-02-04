@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuevos tipos de datos</title>
+</head>
+<body>
+    <h1> Sets </h1>
+
+</body>
+<script>
+/*
+    Los set lo que hacen es mejorar un arreglo y solo permite valores unicos osea elimina los repetidos
+*/
+
+let set = new Set([1,2,3,3,4,4,true,true,false,{},{},'Hola','hola'])
+console.log(set); 
+/*0: 1
+1: 2
+2: 3
+3: 4
+4: true
+5: false
+6: Object
+7: Object
+8: "Hola"
+9: "hola"*/
+
+console.log(set.length) //undefined
+console.log(set.size) // 10
+
+let set2 = new Set();
+set2.add(1)
+set2.add(2)
+set2.add(2)
+set2.add(3)
+set2.add(4)
+set2.add(true)
+set2.add(true)
+set2.add({})
+set2.add(Symbol(2))
+console.log(set2)
+
+console.log("Recorriendo set2")
+
+for( item of set2){
+    console.log(item)
+}
+console.log("Recorriendo set")
+
+set.forEach(item => console.log(item))
+
+//Aunque es set esiterable no se puede acceder a los atributos asi
+console.log(set[0]) //undefined
+
+let arrSet = Array.from(set)
+console.log(arrSet)//(10) [1, 2, 3, 4, true, false, {…}, {…}, 'Hola', 'hola']
+console.log(arrSet[0]) //1
+
+//Eliminar valores de un set
+
+set.delete('Hola')
+console.log(set)
+
+//Buscar en set
+
+console.log(set.has('hola')) // true
+
+//limpiar set
+
+set.clear();
+
+console.log(set)// Set(0) {size: 0}
+
+</script>
+</html>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuevos tipos de datos</title>
+</head>
+<body>
+    <h1> Symbols </h1>
+
+</body>
+<script>
+/*
+    Los simbolos nos permiten crear indicadores/ referencias unicas, se utilizan a para identificar las propiedades de objetos
+*/
+let id ='hola',id2='hola';
+console.log(id === id2) //true
+
+let a = Symbol('hola'),b=Symbol('hola')
+console.log(a === b)// false
+console.log(typeof a ,typeof b)// symbol symbol
+
+//Para acceder a la constante en un objeto literal hay que encerrarlas []
+// si accedieramos al objeto no podriamos saber cual es el nombre de la propiedad por ejemplo imprimiria asi {Symbol(): 'Diego'} 
+//Esto se usa para valores privados de la aplicacion que no queremos que el usuario se entere que propiedad es, por ejemplo en consiguraciones internas del proyecto
+
+const NOMBRE = Symbol('nombre'); // si agregamos nombre a una constante es para el programador poder identificar la propiedad o funcion encriptada
+
+const persona = {
+    [NOMBRE]:'Diego'
+}
+console.log(persona) // {Symbol(): 'Diego'}
+
+persona.NOMBRE = 'Diana'
+
+
+//Las propiedades symbol se modifican persona[NOMBRE] = valor  si lo hacemos persona.NOMBRE crea una propiedad nombre con el nuevo valor
+console.log(persona) // {NOMBRE: 'Diana', Symbol(): 'Diego'}
+console.log(persona.NOMBRE) // Diana
+console.log(persona[NOMBRE]) //Diego
+
+persona[NOMBRE] = 'OMAR'
+
+console.log(persona)
+
+const SALUDAR = Symbol('saludar');
+//Tambien podemos crear funciones de tipo symbol para ocultar el nombre de la funcion
+persona[SALUDAR] = function(){
+    console.log(`Hola ${persona[NOMBRE]}`)
+}
+console.log(persona)//{NOMBRE: 'Diana', Symbol(): 'OMAR', Symbol(): ƒ}
+
+persona[SALUDAR]() // Hola OMAR
+
+for(let propiedad in persona){//console =  NOMBRE no me imprime las propiedades encriptadas con Symbol()
+    console.log(propiedad)
+    console.log(persona[propiedad])
+}
+
+console.log(Object.getOwnPropertySymbols(persona)) // (2) [Symbol(nombre), Symbol(saludar)] me imprime los symbolos con las descripciones
+
+//Su uso comun es crear propiedades privadas dentro de objetos y sus referencias van a ser unicas.
+
+</script>
+</html>
+</html>

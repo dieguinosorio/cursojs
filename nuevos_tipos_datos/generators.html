@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuevos tipos de datos</title>
+</head>
+<body>
+    <h1> Generators </h1>
+
+</body>
+<script>
+/*
+    las funciones anteponiendo del nombre el * se convierten en generadoras 
+    y la palabra reservada return para retornar un valor cambia por yield y se accede con el metodo next() a cada valor siguiente hasta que done este en true lo que quiere decir que
+    es el ultimo elemento del iterador
+*/ 
+function * iterable() {
+    yield  "Hola mundo"
+    "Hola 2"
+    
+    yield " Me llamo diego"
+    "Seguimos en construcción"
+    yield "Como te llams tu"
+    yield "Quieres hablar un rato"
+}
+
+let iterador = iterable();
+/*iterador.next();
+iterador.next();
+iterador.next();
+iterador.next();*/
+
+let item = iterador;
+while(!item.done){
+    iterador.next();
+    item = iterador.next() // aqui reaignamos el nuevo valor siguiente del iterador para que el while siempre valide el item siguiente
+}
+
+for(let iter of iterador){
+    console.log(iter)
+}
+
+const arr = [...iterable()]
+
+console.log(arr)
+
+function cuadrado(value) {
+    if(typeof value !== 'number') return (`el valor ${value} no es un numero`)
+
+    setTimeout(() => {
+        return console.log({valor:value , resultado: value * value})
+    },Math.random() * 1000);
+    
+    
+}
+
+//Yield funciona como las funciones asincronas donde await funcionaba como el callback obteniendo el resultado
+//El generador ejecuta una asincronia no bloquenate ya que no espera el resultado para seguir con la siguiente operacion
+//Entonces en el resultado veremos las respuestan en desorden a como lo ejecutamos por que el setTimeout tiene un randon para realizar el test de no bloqueante 
+/*
+    Inicia Generador
+    Fin Generador
+    {valor: 0, resultado: 0}
+    {valor: 2, resultado: 4}
+    {valor: 5, resultado: 25}
+    {valor: 1, resultado: 1}
+    {valor: 3, resultado: 9}
+    {valor: 4, resultado: 16}
+*/
+function* generador() {
+    console.log("Inicia Generador")
+    yield cuadrado(0);
+    yield cuadrado(1);
+    yield cuadrado(2);
+    yield cuadrado(3);
+    yield cuadrado(4);
+    yield cuadrado(5);
+    console.log("Fin Generador")
+}
+
+const valores = generador();
+/*for(let val of valores){
+    val
+}*/
+
+
+//Ejemplo personal
+function clousureCal(num1,num2){
+    return{
+        suma(){
+            setTimeout(() => {
+                return console.log({suma: (num1 + num2)})
+            },Math.random() * 1000);
+        },
+        resta(){
+            setTimeout(() => {
+                return console.log({ resta :  num1 - num2})
+            },Math.random() * 1000);
+        },
+        multiplicacion(){
+            setTimeout(() => {
+                return console.log({multiplicacion : num1 * num2})
+            },Math.random() * 1000);
+        },
+        division(){
+            setTimeout(() => {
+                return console.log({division : num1 / num2})
+            },Math.random() * 1000);
+        }
+    }
+        
+    
+}
+
+/*En esta funcion generadora estamos ejecutando las funciones del clousure clousureCal, lo que va hacer el generador es ejecutar cada funcion : suma resta,multi,div
+Sin va pasar de suma a resta sin esperar el resultado de suma por lo que el resultado no va estar en orden por el settimeout que tiene cada funcion para simular una peticion que retorna un callbak
+Por ejemplo cuando trabajamos con las promesas esta espera que se ejecute la funcion anterior para ejecutar la siguiente osea que es bloqueante, el caso de los generadores es totalmente
+lo contrario ya que va ejecutar cada funcion sin depender de la anterior y funciona como un iterator */
+function* generadoCalculadora(num1,num2) {
+    let calc = clousureCal(num1,num2);
+    console.log(`Inicial generador calculadora num1 ${num1} y num2 ${num2}`)
+    yield calc.suma();
+    yield calc.resta();
+    yield calc.multiplicacion();
+    yield calc.division();
+    console.log("Fin Generador");
+}
+
+const gen = generadoCalculadora(4,5);
+
+for(let y of gen){
+    y
+}
+
+
+
+
+</script>
+
+</html>
+</html>

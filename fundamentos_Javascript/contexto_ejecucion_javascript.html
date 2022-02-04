@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Contexto Ejecucion Javascript </h1>
+</body>
+
+<script>
+
+//Ejemplo con un clousure
+
+//Las clausuras tiene relacion con los scope , clausura y contexto de ejecucion 
+
+// De hay es que se da el ENTORNO LEXICO o lexical envivorment
+
+/*
+  Cuando javascrip empieza a ejecutar nuestro programa lo primero que hace es crear el contexto de ejecucion inicial,
+  Para eso crear el primer registro para la pila de ejecucion "global" un registro que engloba todas las funciones y variables del programa.
+
+  Luego el contexto de ejecucion pasa por 2 faces :
+
+  Fase de creacion :
+    Donde se carga todo lo necesario en memoria para ejecutar las funciones, en esta etapa se inicializa el registro con cierta informacion como 
+    el archivo donde pertenece la funcion en este caso las "contexto_ejecucion_javascript", se coloca el puntero de la proxima linea de codigo a ejecutar:
+
+      - Para el primer registro se crea el objeto global "window" se pone el valor que va tener this dentro de la funcion "this = window".
+        Tambien se asocia el contexto de ejecucion que se esta creando con el codigo que se va ejecutar "las funciones y todo el codigo del script "
+      
+      - Se crea un entorno lexico :
+        Es un objeto que tiene los contextos de ejecución donde se almacen los nombres de las variables dentro de una funcion y los valores que tienen actualmente
+        son como un diccionario  tienen clave y valor :
+        nombre : 'Diego',
+        edad :29,
+        saludar:function(){
+          "Hola mundo"
+        }
+
+        * Entonces podemos decir que entorno lexico son las variables que estan declaradas dentro de las funciones recibidas como parametros
+        * Tambien se define como registro de entorno o Envivorment record
+      
+      - Entorno lexico exterior:
+        Al ejecutarse una funcion se crea un nuevo scope donde se definen sus variables ("Entorno lexico") donde se van a almacenar las variables que utiliza esa funcion
+
+
+      Entorno Lexico con el ejemplo codificado
+
+      Javascript identifica los metodos y las variables declaradas del script
+      en este caso crearContador(), contador1,contador2
+
+      ****Entorno Lexico****
+      | crearContador() | fn(){...} | luego javascript vincula la funcion en el entorno que se creo ("Esta queda en el entorno lexico global")
+      | contador1() | fn(){...} | como esta declarada con const esta queda <no inicializada> ("Esta queda en el entorno lexico global"), si ubiese estado declarada con var seria <undefined>
+      | contador2() | fn(){...} | como esta declarada con const esta queda <no inicializada> ("Esta queda en el entorno lexico global"), si ubiese estado declarada con var seria <undefined>
+
+      Nota: Hoisting en javascrip - Consiste en darle valores iniciales a las variables y cargar las funciones en memoria
+
+  Fase de Ejecucion :
+
+    -Javascript va ejecutando sentencia por sentencia en este caso : crearContador()
+    -const contador1 = crearContador(); - Crea un nuevo contexto de ejecucion para la funcion crearContador(), carga la informacion y carga la informacion necesaria
+    -const contador2 = crearContador(); - Crea otro  nuevo contexto de ejecucion para la funcion crearContador(), carga la informacion y carga la informacion necesaria diferente a contador1
+
+*/
+function crearContador(){
+    let contador = 0;
+
+    return function incrementar(){
+        return contador ++;
+    }
+}
+
+const contador1 = crearContador();
+contador1();
+contador1();
+contador1();
+
+const contador2 = crearContador();
+contador2();
+
+</script>
+</body>
+
+</html>
+
+</script>
+</html>
+</html>

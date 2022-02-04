@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript manejo de errores</h1>
+</body>
+
+<script>
+  try{
+    console.log("Se ejecuta el codigo sin error")
+    noExite;
+  }
+  catch(error){
+    console.log({"Captura el error": error})
+  }
+  finally{
+    console.log("El finally se ejecutara al final del try-catch")
+  }
+
+  //Funcion de excepcion personalizada
+  function exceptionUsuario(mensaje){
+    this.mensaje = mensaje;
+    this.nombre = "ExceptionUsuario";
+  }
+
+  try {
+    let numero = 'sds';
+    if(isNaN(numero)){
+      throw new exceptionUsuario(`El numero no es valido ${numero}`);
+    }
+    console.log(numero * numero)
+  } catch (error) {
+    console.log(error.mensaje)
+  }
+</script>
+</html>
+</html>

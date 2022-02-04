@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Objetos literales</h1>
+</body>
+
+<script>
+    //Sin las caracteristicas nuevas de objetos literales
+    let nombre = 'kEnAi',edad=7;
+    const perro ={
+        nombre:nombre,
+        edad:edad,
+        ladrar:function(){
+            console.log("Guauu guauuu")
+        }
+    }
+    console.log(perro)
+    perro.ladrar()
+
+    //Con las caracteristicas nuevas de objetos literales
+    //Esta forma lo que hace es tomar los nombres de las propiedades de otro objeto declarado que concida con el nombre de las propiedad de otro objeto ya definido
+    //Y asi escribir mas rapido el codigo de un objeto
+    const dog ={
+        nombre,
+        edad,
+        raza:'bulldog',
+        ladrar(){
+            console.log("guauu guauu guauu")
+        }
+    }
+    console.log(dog)
+    dog.ladrar()
+</script>
+</html>
+</html>

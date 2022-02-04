@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuevos tipos de datos</title>
+</head>
+<body>
+    <h1> Iterables & Iterators </h1>
+
+</body>
+<script>
+/*
+    El iterable es el elemento que se puede recorrer y el iterador es la funcion o mecanismo javascript que lo recorre
+*/
+
+const iterable = [1, 2, 3, 4, 5];
+//const iterable = 'Hola mundo';
+//Accedemos al iterador del iterable
+const iterador = iterable[Symbol.iterator]();
+
+console.log(iterable)
+console.log(iterador)
+
+//Devuelve {value: 1, done: false} value es el valor actual y done es true si es el ultimo elemento si no es false
+/*console.log(iterador.next())//{value: 1, done: false}
+console.log(iterador.next())//{value: 2, done: false}
+console.log(iterador.next())//{value: 3, done: false}
+console.log(iterador.next())//{value: 4, done: false}
+console.log(iterador.next())//{value: 5, done: false}
+console.log(iterador.next())//{value: undefined, done: true}*/
+
+let iter = iterador.next();
+while(!iter.done){
+    console.log(iter.value) 
+    iter = iterador.next();
+}
+</script>
+</html>
+</html>

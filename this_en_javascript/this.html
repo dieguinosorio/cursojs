@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>This en javascript</title>
+</head>
+<body>
+    <h1>  this </h1>
+
+</body>
+<script>
+
+//Es una palabra qe hace referencia al objeto en el que estamos trabajando y asi podemos invocar propiedades o dichos metodos que tenga el objeto
+/*
+En javascript es diferente por que en javascript se habla de los contextos  en el ambito global this hace referencia al objeto window, pero en javascript el contexto de this cambia
+con referencia al scope o bloque donde estemos trabajando u un bloque se define por  
+{
+ this va valer lo que hay dentro de los corchetes
+}
+*/
+
+console.log(window)
+console.log(this) //En este caso imprimiria todas las propiedades de window
+console.log(this === window)
+
+this.nombre = "Contexto Global"
+
+console.log(window.nombre)
+
+function imprimir() {
+    console.log(this.nombre)
+}
+this.imprimir();
+
+const objeto = {
+    nombre:'Contexto  Objeto',
+    imprimir:function(){
+        console.log(this.nombre)
+    }
+}
+objeto.imprimir(); //en este caso imprime contexto global ya que  cada que { } se crea un conexto nuevo entonces dentro de { this busca esa propieda dentro }
+
+const objeto2 = {
+    nombre:'Contexto objeto 2',
+    imprimir
+}
+
+objeto2.imprimir();// Contexto objeto 2, en este caso javascript encapsula el metodo imprimir dentro del objeto y el objeto this sigue siendo el mismo dentro del objeto 
+
+/*
+En este caso las arrow functions toman el valor de this global entonces imprime "Contexto Global" para que tome el contexto 
+del objeto debe declararse con  la sentencia imprimir:function(){} 
+
+Entonces lo que estaria haciendo la arrow function es crear un enlace entre el objeto y el contexto donde se creo el objeto 
+y esto genera conflictos
+ las arrow function no crean un scope entonces se salta al contexto global
+*/
+const objeto3 = {
+    nombre:'Contexto objeto 3',
+    imprimir:()=>{ 
+        console.log(this.nombre)
+    }
+}
+
+objeto3.imprimir();// Contexto objeto 2, en este caso javascript encapsula el metodo imprimir dentro del objeto y el objeto this sigue siendo el mismo dentro del objeto 
+
+//Esto es una funcion constructora en modo clousure( funcion que retorna funciones)
+function Persona(nombre){
+    this.nombre = nombre; //si yo no hago esto nombre pasa a contexto scope de la funcion si no entonces this.nombre = Contexto global
+    //return console.log(this.nombre)  Aqui me ejecutaba Diego por que nombre existe dentro del scope
+    /*return function(){ // pero aqui ya se crea un nuevo contexto, entonces no hay una propiedad que se llame nombre entonces se va al ambito global e imprime "Contexto Global"
+        console.log(this.nombre)
+    }*/
+    return ()=>{// en este caso va imprimir Diego por que las arrow funtion buscan en el ambito global donde fueron creadas en este casi dentro de la clousure
+        console.log(this.nombre);
+    }
+}
+
+const diego = new Persona('Diego');
+diego()
+
+</script>
+</html>
+</html>

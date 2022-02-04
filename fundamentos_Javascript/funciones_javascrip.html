@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Funciones</h1>
+</body>
+
+<script>
+    function estoEsUnaFunction(){
+        console.log('Uno');
+        console.log('Dos');
+        console.log('tres');
+    }
+
+    estoEsUnaFunction();
+
+    console.log(calculadora(2,5))
+    function calculadora(num1,num2){
+        return `La Suma es : ${num1 + num2}
+                La Resta es: ${num1 - num2}
+                La Multiplicación es: ${num1 * num2}
+                La División es: ${num1 / num2}
+        `
+    }
+
+    let resultado = (calculadora(8,10));
+    console.log(resultado);
+
+    //Funcion anonima
+    //Si la llamamos antes de su declaracion js nos devuelve un erro
+    //funcionExpresada() 
+    //Estas se usan mucho en los frameworks angular react vue
+    const funcionExpresada = function(){
+        console.log("Esto es una funcion expresada, es decir una funcion que se le ha asignado a una variable, si unvocamos esta funcion antes de su valor JS nos dira .. error funciones_javascrip.html:71 Uncaught ReferenceError: Cannot access 'funcionExpresada' before initialization")
+    }
+
+    funcionExpresada()
+</script>
+</html>
+</html>

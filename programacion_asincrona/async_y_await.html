@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Programacion Asincrona</title>
+</head>
+<body>
+    <h1> Funciones asincronas Async y Await </h1>
+
+</body>
+<script>
+/*
+
+Van a esperar que algo se cumpla para seguir ejecutando el proceso
+La funcion asincrona se declara anteponiendo de function la palabra async y luego la variable que contiene o la linea donde se ejecuta el metodo promise se ante pone await
+awai nos ahorra tener que ejecutar la funcion en modo callback  
+ejemplo let a = functiona().then().catch() con await seria let a = await functiona() y ya estariamos obteniendo el valor de la promesa
+mejora las practicas de codigo limpio ya que no vamos a tener que utilizar los .then() y el codigo es mas legible
+
+*/
+function cuadradoPromise(value) {
+    if(typeof value !== 'number') return Promise.reject(`el valor ${value} no es un numero`)
+
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve({
+                value,
+                resolve:value * value
+            });
+        }, 0 | Math.random() * 1000);
+    })
+}
+
+async function funcionAsincronaDeclarada() {
+    try{
+        console.log("Inicio funcion Asincrona")
+        let obj  = await cuadradoPromise(0);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(1);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(2);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(3);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(4);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(5);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        console.log("fin async function")
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+funcionAsincronaDeclarada();
+
+const  functionAsincronaExpresada = async () =>{
+    try{
+        console.log("Inicio funcion Asincrona")
+        let obj  = await cuadradoPromise(6);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(7);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(8);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(9);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        obj  = await cuadradoPromise(10);
+        console.log(`Promise:${obj.value}, valor : ${obj.resolve}`)
+
+        console.log("fin async function")
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+functionAsincronaExpresada();
+
+</script>
+</html>
+</html>

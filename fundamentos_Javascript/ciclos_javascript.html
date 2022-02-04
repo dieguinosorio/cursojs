@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fundamentos de Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos Javascript Ciclos o Loops</h1>
+</body>
+
+<script>
+let numeros = [1,2,3,4,23,243,45,3,3,45,5];
+for (let index = 0; index < numeros.length; index++) {
+  console.log(numeros[index])
+}
+
+const persona ={
+  nombre:'Diego',
+  apellidos:'Osorio Urrea',
+  tiwter:'@diegoosorio',
+  cel:3207705285
+}
+
+for(const key in persona){//in me permite recorrer cada elemento de una constante
+  console.log(`Key ${key} , Valor ${persona[key]}`)
+}
+
+let cadena = "Hola mundo";
+for(const caracter of cadena){// of me permite recorrer cada objeto de cadena string que tenga elementos que puedan ser iterables
+  console.log(`Key ${caracter} `)
+}
+
+</script>
+</html>
+</html>
